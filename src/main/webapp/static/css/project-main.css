@@ -1,0 +1,55 @@
+
+
+/*面包屑导航-全局*/
+#contentcrumb {
+    height: 20px;
+}
+
+/*面包屑导航高度变窄为正常*/
+.breadbottom{
+    margin-bottom: 0;
+}
+
+.hrtop{
+    margin-top: 0;
+}
+
+
+/*index模块-----------------------------------------------------------------------*/
+/*首页欢迎图片*/
+.center-block{
+    width: 667px;
+    height: 500px;
+    margin-top: 8em;
+}
+
+
+/*报警模块-----------------------------------------------------------------------*/
+#alarmtable th,td {
+    text-align: center;
+}
+
+
+/*工单报表模块-----------------------------------------------------------------------*/
+#sheettable th,td {
+    text-align: center;
+}
+
+
+/*资产管理、在线监测 共用之‘百度地图适应浏览器缩放全屏显示’设置--------------------------------*/
+.baidu-fullscreen{
+    margin: 15px;
+    margin-top: 0;
+    padding: 0;
+    position: absolute;
+    top: 50px;
+    left: 320px;
+    right: 0;
+    bottom: 0;
+    overflow-y:hidden;
+}
+
+.baidu-breadcrumb{
+    margin-bottom: 0;
+    padding-left: 0;
+}

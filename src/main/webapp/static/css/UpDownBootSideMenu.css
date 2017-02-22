@@ -1,0 +1,179 @@
+html{height:100%;width:100%}
+body{height:100%;width:100%;margin:0px;padding:1px}
+#container{height:100%}
+.updownsidebar{
+      z-index: 999998;
+      position: fixed;
+      /*left: -1px;*/
+      right: -1px;
+      padding:0px;
+      height: 35%;
+      width:82.5%;
+      background-color: #fff;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, .15);
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+      box-shadow: 6px 0px 12px rgba(0, 0, 0, .175);
+
+}
+
+.updownsidebar > .row > .col-xs-12, .updownsidebar > .row > .col-sm-12, .updownsidebar > .row > .col-md-12, .updownsidebar > .row > .col-lg-12{
+      padding:0px;
+      position: absolute;
+      bottom: 0px;
+      top: 0px;
+      overflow: auto;
+}
+
+.updownsidebar >.row{
+      margin:0px;
+}
+
+.updownsidebar {
+      height: auto;
+}
+.updownsidebar.updownsidebar-up{
+      top:0px;
+      bottom:20px;
+}
+
+.updownsidebar.updownsidebar-down{
+      bottom:-35%;
+      top:20px;
+}
+
+@media (min-width: 400px) {
+
+}
+@media (min-width: 528px) {
+      .updownsidebar {
+            height: 35%
+      }
+      .updownsidebar.updownsidebar-up{
+            top:0px;
+            bottom:auto;
+      }
+
+      .updownsidebar.updownsidebar-down{
+            bottom:-35%;
+            top:auto;
+      }
+}
+@media (min-width: 768px) {
+      .updownsidebar {
+            height: 35%
+      }
+      .updownsidebar.updownsidebar-up{
+            top:0px;
+            bottom:auto;
+      }
+
+      .updownsidebar.updownsidebar-down{
+            bottom:-35%;
+            top:auto;
+      }
+}
+@media (min-width: 992px) {
+      .updownsidebar {
+            height: 35%
+      }
+      .updownsidebar.updownsidebar-up{
+            top:0px;
+            bottom:auto;
+      }
+
+      .updownsidebar.updownsidebar-down{
+            bottom:-35%;
+            top:auto;
+      }
+}
+@media (min-width: 1200px) {
+      .updownsidebar {
+            height: 35%
+      }
+      .updownsidebar.updownsidebar-up{
+            top:0px;
+            bottom:auto;
+      }
+
+      .updownsidebar.updownsidebar-down{
+            bottom:-35%;
+            top:auto;
+      }
+}
+.updowntoggler{
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, .15);
+      width: 48px;
+      height: 20px;
+      position: absolute;
+      left: 48%;
+      cursor: pointer;
+}
+.updownsidebar-up > .updowntoggler{
+      -webkit-border-bottom-left-radius: 4px;
+      -webkit-border-bottom-right-radius: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      -moz-border-radius-bottomright: 4px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-top: 1px solid #fff;
+      -webkit-box-shadow: 1px 0px 8px rgba(0, 0, 0, .175);
+      box-shadow: 1px 0px 8px rgba(0, 0, 0, .175);
+      bottom: -20px;
+}
+
+.updownsidebar-up > .updowntoggler > span{
+      margin:2px 2px 2px 15px;
+}
+
+.updownsidebar-up > .updowntoggler > .glyphicon-chevron-down{
+      display:none;
+}
+
+.updownsidebar-down > .updowntoggler{
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-top-right-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-topright: 4px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom: 1px solid #fff;
+      -webkit-box-shadow: -1px 0px 8px rgba(0, 0, 0, .175);
+      box-shadow: -1px 0px 8px rgba(0, 0, 0, .175);
+      top: -20px;
+}
+
+.updownsidebar-down > .updowntoggler > span{
+      margin:2px 2px 2px 15px;
+}
+
+.updownsidebar-down > .updowntoggler > .glyphicon-chevron-up{
+      display:none;
+}
+
+.updownsidebar .submenu{
+      display: none;
+      position: fixed;
+}
+
+/*Native BootStrap Hack*/
+.updownsidebar .list-group-item:last-child, .updownsidebar .list-group-item:first-child{
+      border-radius:0px;
+}
+
+.updownsidebar .list-group{
+      margin-bottom:0px;
+}
+.updownsidebar .list-group-item{
+      padding: 5px;
+      border: 1px solid #DDD;
+      border-left: 0px;
+      border-right: 0px;
+      margin-bottom: 0px;
+      margin-top: -1px;
+}

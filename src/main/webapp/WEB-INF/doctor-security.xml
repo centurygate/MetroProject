@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:aop="http://www.springframework.org/schema/aop"
+         xmlns="http://www.springframework.org/schema/security"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+    <http pattern="/static/**" security="none"/>
+
+    <!-- 其他图片文件夹 -->
+    <http pattern="/**/*.png" security="none"/>
+    <http pattern="/**/*.jpg" security="none"/>
+    <http pattern="/**/*.gif" security="none"/>
+    <http pattern="/**/*.htm*" security="none"/>
+    <!-- 其他css -->
+    <http pattern="/**/*.css" security="none"/>
+    <!-- 所有的JS -->
+    <http pattern="/**/*.js" security="none"/>
+    <http pattern="/**/*.eot" security="none"/>
+    <http pattern="/**/*.svg" security="none"/>
+    <http pattern="/**/*.ttf" security="none"/>
+    <http pattern="/**/*.woff" security="none"/>
+    <http pattern="/**/*.woff2" security="none"/>
+    <http pattern="/**/*.otf" security="none"/>
+    <http pattern="/**/*.ogg" security="none"/>
+    <!-- 所有的flash -->
+    <http pattern="/**/*.swf" security="none"/>
+    <http auto-config="true" use-expressions="true" access-decision-manager-ref="accessDecisionManager">
+        <logout logout-success-url="/login" />
+        <!--<intercept-url pattern="/login" access="permitAll"/>-->
+        <!--<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>-->
+        <custom-filter ref="urlSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
+        <!-- 登陆页面配置 -->
+        <form-login login-page="/login" username-parameter="username" password-parameter="password"
+                    default-target-url="/"
+                    authentication-failure-url="/login?error=%E7%94%A8%E6%88%B7%E5%90%8D%E6%88%96%E5%AF%86%E7%A0%81%E9%94%99%E8%AF%AF"/>
+        <csrf/>
+        <session-management>
+            <concurrency-control max-sessions="1" expired-url="/login?state=%E4%BC%9A%E8%AF%9D%E8%BF%87%E6%9C%9F%5B%E8%AF%A5%E8%B4%A6%E5%8F%B7%E5%8F%AF%E8%83%BD%E5%9C%A8%E5%88%AB%E7%9A%84%E5%9C%B0%E7%82%B9%E7%99%BB%E9%99%86%5D"/>
+        </session-management>
+    </http>
+
+    <!-- 权限管理者 -->
+    <authentication-manager alias="authenticationManager">
+        <!-- 权限提供者 -->
+        <authentication-provider ref="daoAuthenticationProvider">
+            <!-- 可提供登陆访问的用户 -->
+            <!--<user-service>-->
+                <!--<user name="Miler" password="Miler" authorities="ROLE_USER, ROLE_ADMIN"/>-->
+                <!--<user name="Johnson" password="Johnson" authorities="ROLE_USER"/>-->
+            <!--</user-service>-->
+
+            <!--<password-encoder hash="md5">-->
+                <!--<salt-source user-property="username"/>-->
+            <!--</password-encoder>-->
+            <!--<jdbc-user-service data-source-ref="dataSource"-->
+            <!--users-by-username-query="select username,password,status as enabled-->
+            <!--from security_user-->
+            <!--where username=?"-->
+            <!--authorities-by-username-query="select u.username,r.name as authority-->
+            <!--from security_user u-->
+            <!--join security_user_role ur-->
+            <!--on u.id=ur.user_id-->
+            <!--join security_role r-->
+            <!--on r.id=ur.role_id-->
+            <!--where u.username=?"-->
+            <!--/>-->
+        </authentication-provider>
+    </authentication-manager>
+    <!--<global-method-security>-->
+
+        <!--&lt;!&ndash;restrict method getUser in the BusinessServiceImp for users who haven't ROLE_ADMIN authorities&ndash;&gt;-->
+        <!--<protect-pointcut expression="execution(* com.doctor.BusinessServiceImp.getUser(..))" access="ROLE_ADMIN"/>-->
+
+        <!--&lt;!&ndash;restrict all methods in the BusinessServiceImp for users who haven't ROLE_ADMIN authorities&ndash;&gt;-->
+        <!--&lt;!&ndash;<protect-pointcut expression="execution(* com.doctor.BusinessServiceImp.*(..))" access="ROLE_ADMIN"/>&ndash;&gt;-->
+    <!--</global-method-security>-->
+    <b:bean id="daoAuthenticationProvider"
+          class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <b:property name="userDetailsService" ref="userDetailsService"/>
+        <b:property name="passwordEncoder" ref="passwordEncoder"/>
+        <b:property name="saltSource" ref="saltSource"/>
+    </b:bean>
+    <b:bean id="userDetailsService" class="com.xigeng.metroproject.springsecurity.MyJdbcDaoImpl">
+        <b:property name="dataSource" ref="dataSource" />
+        <b:property name="usersByUsernameQuery"
+                  value="select username,password,status as enabled,email,phone,address
+            from security_user
+            where username=?" />
+        <b:property name="authoritiesByUsernameQuery"
+                  value="select u.username,r.name as authority
+            from security_user u
+            join security_user_role ur
+            on u.id=ur.user_id
+            join security_role r
+            on r.id=ur.role_id
+            where u.username=?" />
+    </b:bean>
+
+    <b:bean id="businessService" class="com.xigeng.metroproject.service.BusinessServiceImp"/>
+    <b:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+        <b:property name="userPropertyToUse" value="username"/>
+    </b:bean>
+    <b:bean id="passwordEncoder" class="com.xigeng.metroproject.springsecurity.MyPasswordEncoder"/>
+
+    <b:bean id="filterUrlInvocationSecurityMetadataSource"
+                class="com.xigeng.metroproject.springsecurity.JdbcFilterUrlInvocationDefinitionSourceFactoryBean">
+        <b:property name="dataSource" ref="dataSource"/>
+        <b:property name="resourceQuery" value="
+        select re.res_string,r.name
+          from security_role r
+          join security_resource_role rr
+            on r.id=rr.role_id
+          join security_resource re
+            on re.id=rr.resc_id
+            where re.res_type='URL'
+      order by re.priority
+    "/>
+    </b:bean>
+    <b:bean id="filterMethodInvocationSecurityMetadataSource"
+            class="com.xigeng.metroproject.springsecurity.JdbcFilterMethodInvocationDefinitionSourceFactoryBean">
+        <b:property name="dataSource" ref="dataSource"/>
+        <b:property name="resourceQuery" value="
+        select re.res_string,r.name
+          from security_role r
+          join security_resource_role rr
+            on r.id=rr.role_id
+          join security_resource re
+            on re.id=rr.resc_id
+            where re.res_type='METHOD'
+      order by re.priority
+    "/>
+    </b:bean>
+    <b:bean id="urlSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+        <b:property name="securityMetadataSource" ref="filterUrlInvocationSecurityMetadataSource" />
+        <b:property name="authenticationManager" ref="authenticationManager"/>
+        <b:property name="accessDecisionManager" ref="accessDecisionManager"/>
+    </b:bean>
+
+
+    <b:bean id="methodSecurityInterceptor" class="org.springframework.security.access.intercept.aopalliance.MethodSecurityInterceptor">
+        <b:property name="securityMetadataSource" ref="filterMethodInvocationSecurityMetadataSource"/>
+        <b:property name="authenticationManager" ref="authenticationManager"/>
+        <b:property name="accessDecisionManager" ref="accessDecisionManager"/>
+    </b:bean>
+
+    <aop:config>
+        <aop:pointcut id="businessservice" expression="execution(* com.xigeng.metroproject.service.BusinessServiceImp.*(..))"/>
+        <aop:advisor advice-ref="methodSecurityInterceptor" pointcut-ref="businessservice"/>
+    </aop:config>
+
+    <b:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+                destroy-method="close">
+        <b:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <b:property name="url" value="jdbc:mysql://192.168.1.105:3306/metro?characterEncoding=utf8&amp;useSSL=true" />
+        <b:property name="username" value="root" />
+        <b:property name="password" value="singapore" />
+        <!-- 初始化连接大小 -->
+        <b:property name="initialSize" value="20"></b:property>
+        <!-- 连接池最大数量 -->
+        <b:property name="maxActive" value="150"></b:property>
+        <!-- 连接池最大空闲 -->
+        <b:property name="maxIdle" value="20"></b:property>
+        <!-- 连接池最小空闲 -->
+        <b:property name="minIdle" value="5"></b:property>
+        <!-- 获取连接最大等待时间 -->
+        <b:property name="maxWait" value="60000"></b:property>
+
+        <!--数据源出现长时间没有使用中断后。出现Could not close JDBC Connection这种问题-->
+        <!--org.springframework.jdbc.datasource.DataSourceUtils  - Could not close JDBC Connection java.sql.SQLException: Already closed.-->
+        <!--因此这里设置如下两个属性，否则该工程长时间没有用户登录访问数据库时，会出现登录失败,具体出错信息可以查看shangbaojunapple<shangbaojun@icloud.com> shang_baojun<shang_baojun@163.com> centurygate<centurygate@163.com>邮箱中标题为“工程跑了一晚上”的红色字体部分-->
+        <b:property name="testOnBorrow" value="true"/>
+        <b:property name="validationQuery" value="SELECT 1 FROM DUAL"/>
+
+    </b:bean>
+
+    <b:bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <b:constructor-arg name="decisionVoters">
+            <b:list>
+                <b:ref bean="roleVoter"/>
+                <b:ref bean="authenticatedVoter"/>
+            </b:list>
+        </b:constructor-arg>
+        <!--<b:property name="messageSource" ref="messageSource"></b:property>-->
+    </b:bean>
+
+    <b:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
+        <b:property name="rolePrefix" value="ROLE_"></b:property>
+    </b:bean>
+
+    <b:bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter">
+    </b:bean>
+    <!--<b:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+    <!--</b:bean>-->
+</b:beans>

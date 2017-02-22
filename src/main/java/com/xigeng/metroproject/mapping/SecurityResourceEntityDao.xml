@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xigeng.metroproject.dao.SecurityResourceEntityDao">
+  <resultMap id="BaseResultMap" type="com.xigeng.metroproject.model.SecurityResourceEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="res_type" jdbcType="VARCHAR" property="resType" />
+    <result column="res_string" jdbcType="VARCHAR" property="resString" />
+    <result column="priority" jdbcType="INTEGER" property="priority" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="bsinglerole" jdbcType="BIT" property="bsinglerole"/>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, res_type, res_string, priority, desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from security_resource
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAllSecurityResource" resultMap="BaseResultMap">
+    select * from security_resource where bsinglerole = 1
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from security_resource
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xigeng.metroproject.model.SecurityResourceEntity">
+    insert into security_resource (id, name, res_type, 
+      res_string, priority, desc
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{resType,jdbcType=VARCHAR}, 
+      #{resString,jdbcType=VARCHAR}, #{priority,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xigeng.metroproject.model.SecurityResourceEntity">
+    insert into security_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="resType != null">
+        res_type,
+      </if>
+      <if test="resString != null">
+        res_string,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="desc != null">
+        desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="resType != null">
+        #{resType,jdbcType=VARCHAR},
+      </if>
+      <if test="resString != null">
+        #{resString,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xigeng.metroproject.model.SecurityResourceEntity">
+    update security_resource
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="resType != null">
+        res_type = #{resType,jdbcType=VARCHAR},
+      </if>
+      <if test="resString != null">
+        res_string = #{resString,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="desc != null">
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xigeng.metroproject.model.SecurityResourceEntity">
+    update security_resource
+    set name = #{name,jdbcType=VARCHAR},
+      res_type = #{resType,jdbcType=VARCHAR},
+      res_string = #{resString,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=INTEGER},
+      desc = #{desc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

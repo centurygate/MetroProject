@@ -1,0 +1,256 @@
+/*
+Lumino Admin Bootstrap Template
+Version 1.0
+*/
+
+
+/*Global Styles==================================================================================================*/
+* { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}
+
+body {
+	background: #fff;
+	padding-top: 50px;
+	color: #5f6468;
+}
+
+p {
+	color: #777;
+}
+
+a, a:hover, a:focus {
+	color: #30a5ff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #5f6468;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 40px;
+}
+
+h2 {
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+
+h3, h4 {
+	font-weight: 300;
+}
+
+.large {
+	font-size: 2em;
+}
+
+
+
+.color-gray { color: #5f6468; }
+.color-blue { color: #30a5ff; }
+.color-teal { color: #1ebfae; }
+.color-orange { color: #ffb53e; }
+.color-red { color: #f9243f; }
+/*Global Styles--------------------------------------------------------------------------------------------------*/
+
+
+
+/*navbar-header=================================================================================================*/
+.container-fluid {
+	background-color: #5f6468;
+}
+
+.navbar-header .navbar-brand {
+	color: #fff;
+	font-size: 25px;
+	font-style:italic;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.navbar-header .navbar-brand span {
+	color: #30a5ff;
+}
+/*navbar-header-------------------------------------------------------------------------------------------------*/
+
+
+@media (max-width: 768px) {
+	.widget-right {
+	width: 100%;
+	margin: 0;
+	text-align: center;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	}
+}
+
+@media (max-width: 768px) {
+	.widget-left {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	}
+}
+
+
+/*Navbar========================================================================================================*/
+.navbar {
+	border: 0;
+	height: 50px;
+}
+/*Navbar--------------------------------------------------------------------------------------------------------*/
+
+
+/* UserMenu====================================================================================================== */
+.user-menu {
+	display: inline-block;
+	margin-top: 14px;
+	margin-right: 10px;
+	float: right;
+	list-style: none;
+	padding: 0;
+}
+
+.user-menu a {
+	color: #fff;
+}
+
+.user-menu a:hover, .user-menu a:focus {
+	text-decoration: none;
+}
+/* UserMenu----------------------------------------------------------------------------------------------------- */
+
+
+/* Sidebar====================================================================================================== */
+.sidebar {
+	display: block;
+	background-color: #fcfcfc;
+	padding: 0;
+	display: none;
+}
+
+
+@media (min-width: 768px) {
+	.sidebar {
+		display: block;
+  		position: fixed;
+		top: 50px;  /*标题栏高度*/
+		bottom: 0;
+		left: 0;
+		width: 320px;  /*左侧面板宽度*/
+		z-index: 1000;
+		display: block;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+		overflow-y: auto; 
+		background-color: #fcfcfc;
+		box-shadow: 1px 0px 10px rgba(0, 0, 0, .05);
+	}
+	.navbar-header {
+		width: 100%;
+	}
+}
+
+.sidebar ul.nav a:hover, 
+.sidebar ul.nav li.parent ul li a:hover {
+	text-decoration: none;
+	background-color: #B0E2FF;
+}
+
+.sidebar ul.nav .active a, .sidebar ul.nav li.parent a.active,
+.sidebar ul.nav .active > a:hover, .sidebar ul.nav li.parent a.active:hover,
+.sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
+	color: #fcfcfc;
+	background-color: #63B8FF;
+}
+
+.sidebar ul.nav ul,
+.sidebar ul.nav ul li {
+	list-style: none;
+	list-style-type: none;
+}
+
+.sidebar ul.nav ul.children {
+	width: auto;
+	padding: 0;
+	margin: 0;
+	background: #fcfcfc;
+}
+
+.sidebar ul.nav ul.children li a {
+	height: 40px;
+	background: #fcfcfc;
+	color: #30a5ff!important;
+}
+
+.sidebar ul.nav li.current a {
+	background-color: #30a5ff;
+	color: #fff!important;
+}
+
+.sidebar ul.nav li.parent ul li a {
+	border: none;
+	display:block;
+	padding-left: 30px;
+	line-height: 40px;
+}
+
+
+.sidebar span.glyphicon {
+	margin-right: 10px;
+}
+
+.sidebar ul.nav li.divider {
+	border-bottom: 1px solid #eee;
+	margin: 20px 0;
+}
+
+.sidebar .attribution {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding: 15px;
+	text-align: center;
+	border-top: 1px solid #eee;
+	font-size: 12px;
+}
+/* Sidebar------------------------------------------------------------------------------------------------------ */
+
+
+
+/*ϵͳ==========================================================================================================*/
+.sidebar .glyph, .user-menu .glyph {
+	height: 16px;
+	width: 16px;
+	margin: 0 10px 0 0;
+	stroke-width: 3px;
+}
+
+.user-menu .glyph {
+	stroke-width: 4px;
+}
+
+.breadcrumb {
+	background-color: #fff;
+}
+
+.breadcrumb .glyph {
+	height: 14px;
+	width: 14px;
+	margin: -2px 0 0 0;
+	stroke-width: 4px;
+}
+/*ϵͳ----------------------------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+

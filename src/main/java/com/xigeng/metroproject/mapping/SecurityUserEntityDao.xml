@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xigeng.metroproject.dao.SecurityUserEntityDao">
+  <resultMap id="BaseResultMap" type="com.xigeng.metroproject.model.SecurityUserEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="descfield" jdbcType="VARCHAR" property="descfield" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, password, status, descfield, email, phone, address, date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from security_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAllSecurityUserEntity" resultType="com.xigeng.metroproject.model.SecurityUserEntity">
+    select * from security_user where username != "admin"
+  </select>
+
+  <select id="selectSecurityUserEntityByCondition" resultType="java.lang.Integer" >
+   select count(*) from security_user where username like #{0} and username != "admin" and date &gt;= #{1} and date &lt;= #{2} ORDER by date asc
+  </select>
+
+  <select id="selectSecurityUserEntityByPageAndLimitAndCondition" resultType="com.xigeng.metroproject.model.SecurityUserEntity">
+    <!--select * from security_user where username != "admin" and username = #{0} and date >=#{1} and date <= #{2} limit #{3},#{4}-->
+    select * from security_user where username like #{0} and username != "admin" and date &gt;= #{1} and date &lt;= #{2} ORDER by date asc limit #{3},#{4}
+  </select>
+
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from security_user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from security_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.xigeng.metroproject.model.SecurityUserEntity">
+    insert into security_user (username, password,
+    status, descfield, email,
+    phone, address, date)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+    #{status,jdbcType=INTEGER}, #{descfield,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+    #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},#{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xigeng.metroproject.model.SecurityUserEntity">
+    insert into security_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="descfield != null">
+        descfield,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="descfield != null">
+        #{descfield,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xigeng.metroproject.model.SecurityUserEntity">
+    update security_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="descfield != null">
+        descfield = #{descfield,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xigeng.metroproject.model.SecurityUserEntity">
+    update security_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      descfield = #{descfield,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!--<update id="updatePasswordByPrimaryKey" parameterType="java.lang.Long">-->
+  <!--update security_user-->
+  <!--set password = #{password,jdbcType=VARCHAR}-->
+  <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</update>-->
+</mapper>

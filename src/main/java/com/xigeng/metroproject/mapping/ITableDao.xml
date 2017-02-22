@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xigeng.metroproject.dao.ITableDao" >
+    <resultMap id="BaseResultMap" type="com.xigeng.metroproject.model.Table" >
+        <id column="index" property="index" jdbcType="INTEGER" />
+        <result column="value" property="value" jdbcType="DOUBLE" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        index, value
+    </sql>
+
+    <select id="selectTable1" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet1
+    </select>
+
+    <select id="selectTable2" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet2
+    </select>
+
+    <select id="selectTable3" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet3
+    </select>
+
+    <select id="selectTable4" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet4
+    </select>
+
+    <select id="selectTable5" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet5
+    </select>
+
+    <select id="selectTable6" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet6
+    </select>
+
+    <select id="selectTable7" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet7
+    </select>
+
+    <select id="selectTable8" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet8
+    </select>
+
+    <select id="selectTable9" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet9
+    </select>
+
+    <select id="selectTable10" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from sheet10
+    </select>
+</mapper>

@@ -1,0 +1,105 @@
+
+
+/*地图大小*/
+#monitormap {
+    width: 100%;
+    height: 100%;
+}
+
+#all-panel > .panel-body{
+    padding: 5px;
+    max-height: 730px;
+    overflow: scroll;
+}
+
+.device-panel{
+    padding-bottom: 5px;
+}
+
+.device-panel > .panel-body{
+    overflow:auto;
+    padding: 5px 3px;
+}
+
+.device-panel .panel-body .panel{
+    margin: 0;
+}
+
+
+.device-panel .panel-body .panel-heading{
+    background-color: #FFFFEE;
+    border-style: none
+}
+
+.device-panel .panel-body .panel-body{
+    text-align: center;
+    padding: 5px;
+}
+
+.device-panel .panel-body .panel-body p{
+    font-size:1.0em;
+}
+
+.device-panel .panel-body .panel-body span{
+    color:greenyellow;
+    font-size: 1.5em;
+}
+
+
+.tab{
+    margin-bottom: 3px;
+}
+
+.device-body{
+    padding: 5px 3px;
+}
+
+
+/*测试接入Websocket数值值*/
+.yewei, .ph, .andan{
+    color:orange;
+    font-size: 1.5em;
+}
+
+#monitor-content{
+    padding-left: 0;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 85%;
+}
+
+/*#monitor-content .well{
+    padding:0;
+    height: 830px;
+}*/
+
+.tab .panel-body{
+    text-align: center;
+}
+
+
+#contentcrumb{
+    height: 4.5%;
+    margin: 0;
+    padding: 0;
+}
+
+
+#baidu-container{
+    position: absolute;
+    height: 95%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+#monitor-panel{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 14.5%;
+}

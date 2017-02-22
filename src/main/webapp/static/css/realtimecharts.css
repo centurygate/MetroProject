@@ -1,0 +1,62 @@
+
+.sidebar-nav { margin-bottom:0; padding-bottom: 5px; }
+
+.sidebar-nav .remove { display: none; }
+
+.sidebar-nav .view { display: none; }
+
+.sidebar-nav .panel-body { padding: 5px; overflow:auto; max-height:780px; }
+
+.sidebar-nav .panel-body .panel { border:1px solid #EFEEED; margin-bottom: 5px; }
+
+.sidebar-nav .panel-body .panel .panel-heading { background-color: #FFFFEE; border-style: none; padding: 8px 10px; }
+
+.sidebar-nav .panel-body .panel .panel-body { padding: 8px 10px; }
+
+.sidebar-nav .transform{ display: none;}
+
+
+.col-lg-2 .lyrow { text-align: left; }
+
+.col-lg-2 .lyrow .chart-name { font-size: 1.1em; }
+
+
+/*.col-lg-10 { padding-left: 0; }*/
+
+.container { width:auto; }
+
+.demo {
+    padding:10px 10px;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position:relative;
+    word-wrap: break-word;
+    overflow:auto;
+}
+
+
+.ui-sortable-placeholder { outline: 1px dashed #ddd;visibility: visible!Important; border-radius: 4px; margin-top: 10px;}
+
+.drag { position: absolute; top: 0;right: 0; cursor: pointer; font-size: 0.9em; }
+.drag i, .transform i {color:#000; text-shadow:0 1px 0 #ddd;}
+
+.lyrow { position:relative; display: block; overflow: auto;}
+
+.demo .remove { position: absolute; top: 15px; right: 10px; z-index:10; }
+.demo .drag { position: absolute; top: 15px; right: 65px; z-index: 10; font-size: 0.8em;}
+.demo .transform{ position: absolute; top: 15px; right: 123px; z-index: 10; font-size: 0.8em;}
+
+.column {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 5px 0px;
+    padding: 15px;
+    position: relative;
+}
+
+
+.demo .column { height: 300px; }
+
+.demo .chart-name { display: none; }
+/*.demo .drag {display: none; }*/
