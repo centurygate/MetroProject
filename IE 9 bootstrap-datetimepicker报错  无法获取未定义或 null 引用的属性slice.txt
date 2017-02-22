@@ -1,0 +1,22 @@
+http://www.04007.cn/article/210.html
+bootstrap-datetimepicker报错:无法获取未定义或 null 引用的属性slice
+
+publish:August 12, 2016 -Friday by 04007 本站原创文章,转载请注明文章出处：www.04007.cn	
+
+ 
+    在Chrome浏览器里运行地好好的JS代码，放到IE10里面突然失灵了，看报错发现加载的时间日历插件bootstrap-datetimepicker竟然报错。定位到出问题的代码这句：
+this.defaultTimeZone = (new Date).toString().split('(')[1].slice(0, -1);
+
+报错：SCRIPT5007: 无法获取未定义或 null 引用的属性“slice” 
+
+JS调试发现在chrome浏览器执行：(new Date).toString() 取得的值是：Fri Aug 12 2016 21:00:25 GMT+0800 (中国标准时间)
+
+而在IE10里同样执行上面的(new Date).toString() 取得的却是：Fri Aug 12 21:04:55 UTC+0800 2016
+
+可见，在IE10里执行时根本不存在有“(”符号，故这句在IE里报错了。
+
+我在其它的几个浏览器里都是正常的，就是在IE10里这个样，如果你的产品是面向国内的话，可以把上面这句代码注释，而直接使用春正确的结果替代即可，我这里直接这样修改，即大功告成。
+//this.defaultTimeZone = (new Date).toString().split('(')[1].slice(0, -1);
+this.defaultTimeZone = '中国标准时间';
+
+附上日历时间选择器bootstrap-datetimepicker2.0完整包的下载地址：日历时间选择器bootstrap-datetimepicker2.0完整包 
