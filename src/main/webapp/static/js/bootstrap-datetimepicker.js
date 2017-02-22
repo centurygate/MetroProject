@@ -52,20 +52,21 @@
 
   // Add timezone abbreviation support for ie6+, Chrome, Firefox
   function timeZoneAbbreviation() {
-    var abbreviation, date, formattedStr, i, len, matchedStrings, ref, str;
-    date = (new Date()).toString();
-    formattedStr = ((ref = date.split('(')[1]) !== null ? ref.slice(0, -1) : 0) || date.split(' ');
-    if (formattedStr instanceof Array) {
-      matchedStrings = [];
-      for (var i = 0, len = formattedStr.length; i < len; i++) {
-        str = formattedStr[i];
-        if ((abbreviation = (ref = str.match(/\b[A-Z]+\b/)) !== null) ? ref[0] : 0) {
-          matchedStrings.push(abbreviation);
-        }
-      }
-      formattedStr = matchedStrings.pop();
-    }
-    return formattedStr;
+    // var abbreviation, date, formattedStr, i, len, matchedStrings, ref, str;
+    // date = (new Date()).toString();
+    // formattedStr = ((ref = date.split('(')[1]) !== null ? ref.slice(0, -1) : 0) || date.split(' ');
+    // if (formattedStr instanceof Array) {
+    //   matchedStrings = [];
+    //   for (var i = 0, len = formattedStr.length; i < len; i++) {
+    //     str = formattedStr[i];
+    //     if ((abbreviation = (ref = str.match(/\b[A-Z]+\b/)) !== null) ? ref[0] : 0) {
+    //       matchedStrings.push(abbreviation);
+    //     }
+    //   }
+    //   formattedStr = matchedStrings.pop();
+    // }
+    return '中国标准时间';
+    // return formattedStr;
   }
 
   function UTCDate() {

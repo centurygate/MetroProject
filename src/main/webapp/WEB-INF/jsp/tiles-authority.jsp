@@ -139,7 +139,7 @@
 <script src="${pageContext.request.contextPath}/static/js/module-authority.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.validate.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/localization/messages_zh.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/bootstrap-datetimepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-datetimepicker.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap-datetimepicker-locales/bootstrap-datetimepicker.zh-CN.js"
         charset="UTF-8"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap-table/bootstrap-table.min.js"></script>
@@ -332,30 +332,6 @@
                 showMeridian: 1,
                 pickerPosition: "bottom-left",
                 format: "yyyy-mm-dd hh:ii:ss"
-            });
-            $('.form_date').datetimepicker({
-                language: 'zh-CN',
-                weekStart: 1,
-                todayBtn: 1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0,
-                pickerPosition: "bottom-left"
-            });
-            $('.form_time').datetimepicker({
-                language: 'zh-CN',
-                weekStart: 1,
-                todayBtn: 1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 1,
-                minView: 0,
-                maxView: 1,
-                forceParse: 0,
-                pickerPosition: "bottom-left",
-
             });
             $('#authchg-href').click(function () {
 //            alert("click #authchg-tab");
