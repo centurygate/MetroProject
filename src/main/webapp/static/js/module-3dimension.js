@@ -10,7 +10,7 @@ $(function () {
     })
   
     //初始加载Skyline窗口
-    var flyPath = "E:\\METRO\\Default.fly";
+    var flyPath = project_url+"/static/fly/Default.fly";
     sgworld.Project.Open(flyPath);
 
     //socket URL地址及监听连接
