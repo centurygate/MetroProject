@@ -14,7 +14,7 @@
 <script src="${pageContext.request.contextPath}/static/js/echarts.min.js"></script>
 
 
-<div class="col-lg-10 col-lg-offset-2 main" style="margin-top: 50px;">
+<div class="col-lg-10 col-lg-offset-2 main">
     <div class="row" id="contentcrumb">
         <ol class="breadcrumb breadbottom">
             <li><a href="#">
@@ -29,310 +29,310 @@
 
 
     <%--右侧的导出Excel功能按钮--%>
-    <div class="pull-right" style="margin-right: 20px;">
+    <div class="pull-right">
         <button type="button" class="btn btn-info" onclick="window.location.href='${pageContext.request.contextPath}/goanalysis.action'">导出Excel报表</button>
     </div>
 
 
     <!--图表1：左线人工水平收敛==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">左线-人工水平收敛</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>左线-人工水平收敛</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">706</td>
-                <td style="text-align:center;">-0.58</td>
-                <td style="text-align:center;">-0.028</td>
-                <td style="text-align:center;">662</td>
-                <td style="text-align:center;">-77.2</td>
-                <td style="text-align:center;">-0.722</td>
+                <td>706</td>
+                <td>-0.58</td>
+                <td>-0.028</td>
+                <td>662</td>
+                <td>-77.2</td>
+                <td>-0.722</td>
             </tr>
             </tbody>
         </table>
 
         <!--假的图表1-->
-        <div id="null0" style="width: 100%;height:320px; display: none;"></div>
+        <div id="null0"></div>
 
         <!--真的图表1-->
-        <div id="left-manualshoulian" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="left-manualshoulian"></div>
 
     </div>
     <hr/>
 
     <!--图表2：右线人工水平收敛==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">右线-人工水平收敛</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>右线-人工水平收敛</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">712</td>
-                <td style="text-align:center;">-0.55</td>
-                <td style="text-align:center;">-0.025</td>
-                <td style="text-align:center;">618</td>
-                <td style="text-align:center;">-78.8</td>
-                <td style="text-align:center;">-0.768</td>
+                <td>712</td>
+                <td>-0.55</td>
+                <td>-0.025</td>
+                <td>618</td>
+                <td>-78.8</td>
+                <td>-0.768</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="right-manualshoulian" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="right-manualshoulian"></div>
 
     </div>
     <hr/>
 
     <!--图表3：左线-道床沉降==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">左线-道床沉降</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>左线-道床沉降</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">708</td>
-                <td style="text-align:center;">-0.60</td>
-                <td style="text-align:center;">-0.029</td>
-                <td style="text-align:center;">624</td>
-                <td style="text-align:center;">-79.2</td>
-                <td style="text-align:center;">-0.791</td>
+                <td>708</td>
+                <td>-0.60</td>
+                <td>-0.029</td>
+                <td>624</td>
+                <td>-79.2</td>
+                <td>-0.791</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="left-daochuangchenjiang" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="left-daochuangchenjiang"></div>
 
     </div>
     <hr/>
 
     <!--图表4：右线-道床沉降==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">右线-道床沉降</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>右线-道床沉降</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">435</td>
-                <td style="text-align:center;">-1.30</td>
-                <td style="text-align:center;">-0.062</td>
-                <td style="text-align:center;">617</td>
-                <td style="text-align:center;">-103.2</td>
-                <td style="text-align:center;">-1.025</td>
+                <td>435</td>
+                <td>-1.30</td>
+                <td>-0.062</td>
+                <td>617</td>
+                <td>-103.2</td>
+                <td>-1.025</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="right-daochuangchenjiang" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="right-daochuangchenjiang"></div>
 
     </div>
     <hr/>
 
     <!--图表5：左线-水平位移==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">左线-水平位移</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>左线-水平位移</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">592</td>
-                <td style="text-align:center;">-0.90</td>
-                <td style="text-align:center;">-0.043</td>
-                <td style="text-align:center;">565</td>
-                <td style="text-align:center;">19.3</td>
-                <td style="text-align:center;">0.005</td>
+                <td>592</td>
+                <td>-0.90</td>
+                <td>-0.043</td>
+                <td>565</td>
+                <td>19.3</td>
+                <td>0.005</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="left-horizonshift" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="left-horizonshift"></div>
 
     </div>
     <hr/>
 
     <!--图表6：右线-水平位移==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">右线-水平位移</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>右线-水平位移</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">654</td>
-                <td style="text-align:center;">-1.20</td>
-                <td style="text-align:center;">-0.057</td>
-                <td style="text-align:center;">545</td>
-                <td style="text-align:center;">34.8</td>
-                <td style="text-align:center;">0.007</td>
+                <td>654</td>
+                <td>-1.20</td>
+                <td>-0.057</td>
+                <td>545</td>
+                <td>34.8</td>
+                <td>0.007</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="right-horizonshift" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="right-horizonshift"></div>
 
     </div>
     <hr/>
 
     <!--图表7：左线-水平收敛==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">左线-水平收敛</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>左线-水平收敛</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">821</td>
-                <td style="text-align:center;">-0.69</td>
-                <td style="text-align:center;">-0.033</td>
-                <td style="text-align:center;">617</td>
-                <td style="text-align:center;">-78.0</td>
-                <td style="text-align:center;">-0.685</td>
+                <td>821</td>
+                <td>-0.69</td>
+                <td>-0.033</td>
+                <td>617</td>
+                <td>-78.0</td>
+                <td>-0.685</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="left-horizonconvergence" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="left-horizonconvergence"></div>
 
     </div>
     <hr/>
 
     <!--图表8：右线-水平位移==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">右线-水平收敛</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>右线-水平收敛</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">688</td>
-                <td style="text-align:center;">-0.51</td>
-                <td style="text-align:center;">-0.017</td>
-                <td style="text-align:center;">667</td>
-                <td style="text-align:center;">-68.7</td>
-                <td style="text-align:center;">-0.741</td>
+                <td>688</td>
+                <td>-0.51</td>
+                <td>-0.017</td>
+                <td>667</td>
+                <td>-68.7</td>
+                <td>-0.741</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="right-horizonconvergence" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="right-horizonconvergence"></div>
 
     </div>
     <hr/>
 
     <!--图表9：左线-人工道床沉降==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">左线-人工道床沉降</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>左线-人工道床沉降</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">700</td>
-                <td style="text-align:center;">-0.45</td>
-                <td style="text-align:center;">-0.02</td>
-                <td style="text-align:center;">766</td>
-                <td style="text-align:center;">-60.8</td>
-                <td style="text-align:center;">-0.774</td>
+                <td>700</td>
+                <td>-0.45</td>
+                <td>-0.02</td>
+                <td>766</td>
+                <td>-60.8</td>
+                <td>-0.774</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="left-manualsettle" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="left-manualsettle"></div>
 
     </div>
     <hr/>
 
     <!--图表10：右线-人工道床沉降==============================================================================-->
-    <div class="row" style="padding: 30px; padding-bottom: 40px;">
-        <table class="table table-striped table-bordered" style="margin-bottom: 0;">
-            <caption style="font-weight:bold; margin-bottom: 1em; font-size: 1.5em;">右线-人工道床沉降</caption>
+    <div class="row tablestyle">
+        <table class="table table-striped table-bordered">
+            <caption>右线-人工道床沉降</caption>
             <tbody>
             <tr>
-                <td style="text-align:center;">阶段变化最大点</td>
-                <td style="text-align:center;">阶段最大值</td>
-                <td style="text-align:center;">阶段速率(mm/d)</td>
-                <td style="text-align:center;">累计变化最大点</td>
-                <td style="text-align:center;">累计最大值(mm)</td>
-                <td style="text-align:center;">近百日速率(mm/hd)</td>
+                <td>阶段变化最大点</td>
+                <td>阶段最大值</td>
+                <td>阶段速率(mm/d)</td>
+                <td>累计变化最大点</td>
+                <td>累计最大值(mm)</td>
+                <td>近百日速率(mm/hd)</td>
             </tr>
             <tr>
-                <td style="text-align:center;">698</td>
-                <td style="text-align:center;">-0.55</td>
-                <td style="text-align:center;">-0.034</td>
-                <td style="text-align:center;">559</td>
-                <td style="text-align:center;">-68.6</td>
-                <td style="text-align:center;">-0.771</td>
+                <td>698</td>
+                <td>-0.55</td>
+                <td>-0.034</td>
+                <td>559</td>
+                <td>-68.6</td>
+                <td>-0.771</td>
             </tr>
             </tbody>
         </table>
 
         <!--这里测试添加折线图表-->
-        <div id="right-manualsettle" style="width: 100%;height:320px; margin-top: 20px;"></div>
+        <div class="general-sheet" id="right-manualsettle"></div>
 
     </div>
 

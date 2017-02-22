@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<div class="col-lg-10 col-lg-offset-2 main"  style="margin-top: 50px;">
+<div class="col-lg-10 col-lg-offset-2 main">
     <div class="row" id="contentcrumb">
         <ol class="breadcrumb breadbottom">
             <li><a href="#">

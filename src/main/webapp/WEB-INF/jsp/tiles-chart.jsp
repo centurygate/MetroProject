@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<div class="col-lg-10 col-lg-offset-2 main"  style="margin-top: 50px;">
+<div class="col-lg-10 col-lg-offset-2 main">
 
     <div class="row" id="contentcrumb">
         <ol class="breadcrumb breadbottom">
@@ -315,7 +315,7 @@
             <div class="col-lg-10">
                 <div class="demo">
                     <%--固定存在的曲线对话框1--%>
-                    <div class="lyrow ui-draggable" name="0" style="display: block;">
+                    <div class="lyrow ui-draggable" name="0">
                         <span class="chart-name">测距仪1</span>
                         <a href="#close" class="remove label label-danger"><i class="glyphicon-remove glyphicon"></i>删除</a>
                         <span class="drag label label-default"><i class="glyphicon glyphicon-move"></i>拖动</span>
@@ -353,6 +353,7 @@
 <%--websocket脚本--%>
 <script src="${pageContext.request.contextPath}/static/js/sockjs.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/stomp.min.js"></script>
+
 
 <script src="${pageContext.request.contextPath}/static/js/echarts.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/scripts.min.js"></script>

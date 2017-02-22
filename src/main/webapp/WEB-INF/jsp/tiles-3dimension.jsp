@@ -21,12 +21,12 @@
 
             <%--右侧功能菜单--地下模式--%>
             <div class="menu-item" id="menu-underground">
-                <a href="#" style="font-size: 0.9em;">地下模式</a>
+                <a href="#">地下模式</a>
             </div>
 
             <%--右侧功能菜单--区域定位--%>
             <div class="menu-item" id="menu-position">
-                <a href="#" style="font-size: 0.9em;">区域定位</a>
+                <a href="#">区域定位</a>
             </div>
         </ol>
     </div><!--/.row-->

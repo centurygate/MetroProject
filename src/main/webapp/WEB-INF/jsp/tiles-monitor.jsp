@@ -7,8 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
+<%--jquery引用--%>
 <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
+
+<%--百度地图应用--%>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=U8GZ1pAUaHnQaoOvYAedyszjQHmIWAYD"></script>
 
 <!-- 引入 ECharts 文件 -->
 <script src="${pageContext.request.contextPath}/static/js/echarts.min.js"></script>
@@ -31,6 +34,14 @@
 
     <%--百度地图应用--%>
     <div class="baidu-asset" id="assetmap"></div>
+    <script type="text/javascript">
+        // 百度地图API功能
+        var map = new BMap.Map("assetmap",{enableMapClick:false});    // 创建Map实例
+        map.centerAndZoom(new BMap.Point(118.802673,32.046303), 19);  // 初始化地图,设置中心点坐标和地图级别
+        map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));
+        map.setCurrentCity("南京");          // 设置地图显示的城市 此项是必须设置的
+    </script>
+
 
     <!--collapase panel in the bottom-->
     <div id = "downsidebar">
@@ -202,13 +213,7 @@
 
 
 <!--javascript 脚本-->
-
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
-
-<%--百度地图应用--%>
-<script src="http://api.map.baidu.com/api?v=2.0&ak=U8GZ1pAUaHnQaoOvYAedyszjQHmIWAYD"></script>
-
-
 
 <!--Icons图标-->
 <script src="${pageContext.request.contextPath}/static/js/lumino.glyphs.js"></script>
@@ -219,6 +224,7 @@
 <%--模块自己的js文件--%>
 <script src="${pageContext.request.contextPath}/static/js/module-monitor.js"></script>
 
+<%--滑动侧边栏的js文件--%>
 <script src="${pageContext.request.contextPath}/static/js/BootSideMenu.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/UpDownBootSideMenu.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/sidebarcontrol.js"></script>
