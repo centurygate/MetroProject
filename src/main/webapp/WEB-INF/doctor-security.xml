@@ -157,7 +157,7 @@
     <b:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
                 destroy-method="close">
         <b:property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <b:property name="url" value="jdbc:mysql://192.168.1.105:3306/metro?characterEncoding=utf8&amp;useSSL=true" />
+        <b:property name="url" value="jdbc:mysql://121.196.213.38:3306/metro?characterEncoding=utf8&amp;useSSL=true" />
         <b:property name="username" value="root" />
         <b:property name="password" value="singapore" />
         <!-- 初始化连接大小 -->
