@@ -164,7 +164,14 @@
         //console.log("status = "+status);
         //console.log("====================================================");
         $.get("chguserstatus?id="+userid+"&status="+activestatus,
-            function(responsedata,responsestatus) {
+            function(responsedata,responsestatus,xhr) {
+            console.log("responsestatus: "+responsestatus);
+            if (responsedata != "absolutely ok")
+            {
+                    console.log("Location.herf = ",location.href);
+                    location.replace(location.pathname+location.search);
+                    return;
+            }
             if (responsestatus == 'success')
             {
                 Lobibox.notify('success',{msg:'状态更改成功!',delay:1000,size:'mini',sound: true,soundPath:'static/sounds/'});
@@ -177,7 +184,7 @@
                 //失败后刷新表格数据 使得checkbox状态正确
                 $('#eventTable').bootstrapTable(('refresh'));	// 很重要的一步，刷新url！
             }
-            console.log("response data ="+responsedata+" response status ="+responsestatus );
+            //console.log("response data ="+responsedata+" response status ="+responsestatus );
         }).success(function () {
             console.log("chguserstatus success!");
         }).error(function () {
