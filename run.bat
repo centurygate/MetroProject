@@ -21,5 +21,6 @@ cd %b%
 copy /y "target\MetroProject.war" "C:\Program Files\apache-tomcat-9.0.0.M13\webapps"
 cd C:\Program Files\apache-tomcat-9.0.0.M13\bin
 call startup.bat
+cd %b%
 pause
 
