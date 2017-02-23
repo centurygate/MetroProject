@@ -1,4 +1,6 @@
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -96,7 +98,7 @@
                                     <label for="endDate" class="col-md-2 control-label">结束时间</label>
                                     <div class="input-group date form_datetime col-md-2"
                                          data-date="1979-01-01 23:59:59" data-date-format="yyyy-mm-dd hh:ii:ss">
-                                        <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="1979-01-01 23:59:59" placeholder="结束时间" readonly>
+                                        <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="<fmt:formatDate value="<%=new Date() %>" pattern="yyyy-MM-dd HH:mm:ss" />" placeholder="结束时间" readonly>
                                         <span class="input-group-addon"><span
                                                 class="glyphicon glyphicon-remove"></span></span>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
