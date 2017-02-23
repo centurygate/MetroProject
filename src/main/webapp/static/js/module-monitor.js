@@ -10,15 +10,8 @@ $(document).ready(function () {
     $('#menu-monitor').addClass('active');
     
     var baiduURL = project_url + "/asset";
-    try {
-        RunBaiduMap(baiduURL);
-    }
-    catch (exception) {
-        console.error("Exception messages lists below----------------->:");
-        console.error("exception.type: " + exception.name);
-        console.error("exception.message: " + exception.message);
-    }
-
+    showAssetTypes(baiduURL, 0);
+    
 });
 
 
@@ -100,29 +93,10 @@ function showAssetTypes(requestUrl, type) {
 
 
 
-var map=null;
+/*var map=null;
 function RunBaiduMap(requestUrl){
-    // 百度地图API功能
-    map = new BMap.Map("assetmap",{enableMapClick:false});    // 创建Map实例
-    //var opts = {type: BMAP_NAVIGATION_CONTROL_ZOOM}
-    //map.addControl(new BMap.NavigationControl(opts));
-    map.centerAndZoom(new BMap.Point(118.802673,32.046303), 19);  // 初始化地图,设置中心点坐标和地图级别
-    map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));
-    map.setCurrentCity("南京");          // 设置地图显示的城市 此项是必须设置的
-    //map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-
-
-    //添加行政区白色蒙罩
-    //getBoundary();
-
-    //创建绿点设施示意
-    if(document.createElement('canvas').getContext){
-
-        showAssetTypes(requestUrl, 0);
-    } else{
-        alert("浏览器版本不支持！！");
-    }
-}
+    
+}*/
 
 
 function getBoundary(){

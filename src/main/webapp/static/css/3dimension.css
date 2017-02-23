@@ -3,6 +3,10 @@
     float: right;
 }
 
+.menu-item > a{
+    font-size: 0.9em;
+}
+
 #menu-underground{
     padding-left: 15px;
 }

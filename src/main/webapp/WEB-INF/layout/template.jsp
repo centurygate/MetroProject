@@ -14,16 +14,18 @@
     <link href="${pageContext.request.contextPath}/static/css/BootSideMenu.css" rel="stylesheet"/>
 
     <link href="${pageContext.request.contextPath}/static/css/jquery-confirm.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/lobibox.min.css" rel="stylesheet">
 
     <link href="${pageContext.request.contextPath}/static/css/styles.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet"/>
+
     <link href="${pageContext.request.contextPath}/static/css/project-main.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/3dimension.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/asset-main.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/realtimecharts.css" rel="stylesheet"/>
-
-
     <link href="${pageContext.request.contextPath}/static/css/UpDownBootSideMenu.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/static/css/tiles-sheet.css" rel="stylesheet">
 
 </head>
 

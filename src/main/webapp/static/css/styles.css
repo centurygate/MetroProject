@@ -140,7 +140,7 @@ h3, h4 {
 		top: 50px;  /*标题栏高度*/
 		bottom: 0;
 		left: 0;
-		width: 320px;  /*左侧面板宽度*/
+		width: 16%;  /*左侧面板宽度*/
 		z-index: 1000;
 		display: block;
 		margin: 0;

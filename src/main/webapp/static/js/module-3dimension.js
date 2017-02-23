@@ -30,38 +30,11 @@ $(function () {
     //地下模式的点击响应
     $('#menu-underground').click(function () {
 
-        //sgworld.Command.Execute(1027, 0);
+        sgworld.Command.Execute(1027, 0);
 
-        //测试替换image label的文件路径
-/*        var objid = sgworld.ProjectTree.FindItem('picture');
-        var obj = sgworld.ProjectTree.GetObject(objid);
-        obj.ImageFileName ='E:\\error.png';
-
-        setInterval(switchpicture(), 2000);
- */
-
-        //测试选中模型高亮功能
-/*        var objid = sgworld.ProjectTree.FindItem('scale');
-        var obj = sgworld.ProjectTree.GetObject(objid);
-        obj.Terrain.Tint.abgrColor = 0x0000ff;
-        obj.Terrain.Tint.SetAlpha(0.8);
-        setInterval(switchHighlight(), 2000);
-*/
         switchHighlight(cnt);
     });
 
-/*    function switchpicture() {
-        var objid = sgworld.ProjectTree.FindItem('picture');
-        var obj = sgworld.ProjectTree.GetObject(objid);
-
-        if(cnt % 2 ==0){
-            obj.ImageFileName ='E:\\error.png';
-        }
-        else{
-            obj.ImageFileName ='E:\\right.png';
-        }
-        cnt++;
-    };*/
 
     function switchHighlight() {
         var objid = sgworld.ProjectTree.FindItem('scale');
@@ -69,16 +42,6 @@ $(function () {
 
         var g= 128.0*(1.0-(cnt-0.2)/0.8);
         obj.Terrain.Tint.abgrColor = sgworld.Creator.CreateColor(255, g, 0, 255).ToABGRColor();
-/*        if(cnt % 2 ==0){
-            var r=255;
-            obj.Terrain.Tint.abgrColor = sgworld.Creator.CreateColor(r, 0, 0, 255).ToABGRColor();
-            obj.Terrain.Tint.SetAlpha(0.8);
-        }
-        else{
-            var g=255;
-            obj.Terrain.Tint.abgrColor = sgworld.Creator.CreateColor(0, g, 0, 255).ToABGRColor();
-            obj.Terrain.Tint.SetAlpha(0.8);
-        }*/
         cnt+=0.05;
     }
 
@@ -129,7 +92,7 @@ $(function () {
                         var id= 'pic_'+ num.toString();
                         var objid = sgworld.ProjectTree.FindItem(id);
                         var obj = sgworld.ProjectTree.GetObject(objid);
-                        obj.ImageFileName ='E:\\normal.png';
+                        obj.ImageFileName = project_url + '/static/image/normal.png';
 
                         //set model
                         var id2= 'seg_'+ num.toString();
@@ -160,7 +123,7 @@ $(function () {
                         var id= 'pic_'+ num.toString();
                         var objid = sgworld.ProjectTree.FindItem(id);
                         var obj = sgworld.ProjectTree.GetObject(objid);
-                        obj.ImageFileName ='E:\\exception.png';
+                        obj.ImageFileName = project_url + '/static/image/exception.png';
 
                         //set model
                         var id2= 'seg_'+ num.toString();

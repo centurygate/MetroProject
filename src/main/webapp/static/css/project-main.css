@@ -1,4 +1,7 @@
 
+.main {
+    margin-top: 50px;
+}
 
 /*面包屑导航-全局*/
 #contentcrumb {
@@ -43,7 +46,7 @@
     padding: 0;
     position: absolute;
     top: 50px;
-    left: 320px;
+    left: 16%;
     right: 0;
     bottom: 0;
     overflow-y:hidden;
