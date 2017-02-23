@@ -354,9 +354,10 @@
             var hour = today.getHours();
             var min = today.getMinutes();
             var sec = today.getSeconds();
-            timestr = ""+today.getFullYear()+"-"+(month < 9?("0"+month):(month))+"-"+(day < 9?("0"+day):(day))+" "+
+            timestr = ""+today.getFullYear()+"-"+(month < 9?("0"+(month+1)):(month+1))+"-"+(day < 9?("0"+day):(day))+" "+
                 (hour < 10?("0"+hour):(hour))+":"+(min < 10?("0"+min):(min))+":"+(sec < 10?("0"+sec):(sec))
-            $('#endDate').val();
+            console.log(timestr);
+            $('#endDate').val(timestr);
             // 初始化表格
             initTable();
         }
