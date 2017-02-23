@@ -1,8 +1,10 @@
 set b=%cd%
 set dirpath=%~d0
 call mvn clean package
-call "C:\Program Files\apache-tomcat-9.0.0.M13\bin\shutdown.bat"
+
 C:
+cd C:\Program Files\apache-tomcat-9.0.0.M13\bin
+call shutdown.bat
 cd C:\Program Files\apache-tomcat-9.0.0.M13\webapps
 del  MetroProject.war
 rmdir /s /q MetroProject
@@ -17,6 +19,7 @@ echo %dirpath%
 echo %b%
 cd %b%
 copy /y "target\MetroProject.war" "C:\Program Files\apache-tomcat-9.0.0.M13\webapps"
-call "C:\Program Files\apache-tomcat-9.0.0.M13\bin\startup.bat"
+cd C:\Program Files\apache-tomcat-9.0.0.M13\bin
+call startup.bat
 pause
 
