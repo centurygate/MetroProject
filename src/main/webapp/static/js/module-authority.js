@@ -41,7 +41,7 @@ function SelfConfirm(type, content) {
         content: self.content,
         type: 'blue',
         typeAnimated: true,
-        columnClass: 'col-md-3',
+        // columnClass: 'col-md-3',
         buttons: {
             close: {
                 text: '关闭',
