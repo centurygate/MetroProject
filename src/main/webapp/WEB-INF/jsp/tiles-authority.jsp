@@ -1,3 +1,5 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -95,8 +97,8 @@
                                     </div>
                                     <label for="endDate" class="col-md-2 control-label">结束时间</label>
                                     <div class="input-group date form_datetime col-md-2" id="endDateDiv"
-                                         data-date="1979-01-01 23:59:59" data-date-format="yyyy-mm-dd hh:ii:ss">
-                                        <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="1979-01-01 23:59:59" placeholder="结束时间" readonly>
+                                         data-date="<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())%>" data-date-format="yyyy-mm-dd hh:ii:ss">
+                                        <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())%>" placeholder="结束时间" readonly>
                                         <span class="input-group-addon"><span
                                                 class="glyphicon glyphicon-remove"></span></span>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
@@ -347,18 +349,18 @@
                 $('#reguser-li').addClass('active');
                 $('#reguser-tab').addClass('active');
             });
-            //endDate 初始化为当天的时间
-            var today = new Date();
-            var month = today.getMonth();
-            var day = today.getDate();
-            var hour = today.getHours();
-            var min = today.getMinutes();
-            var sec = today.getSeconds();
-            timestr = ""+today.getFullYear()+"-"+(month < 9?("0"+(month+1)):(month+1))+"-"+(day < 9?("0"+day):(day))+" "+
-                (hour < 10?("0"+hour):(hour))+":"+(min < 10?("0"+min):(min))+":"+(sec < 10?("0"+sec):(sec))
-            console.log(timestr);
-            $('#endDate').val(timestr);
-            $('#endDateDiv').attr("data-date",timestr);
+//            //endDate 初始化为当天的时间
+//            var today = new Date();
+//            var month = today.getMonth();
+//            var day = today.getDate();
+//            var hour = today.getHours();
+//            var min = today.getMinutes();
+//            var sec = today.getSeconds();
+//            timestr = ""+today.getFullYear()+"-"+(month < 9?("0"+(month+1)):(month+1))+"-"+(day < 9?("0"+day):(day))+" "+
+//                (hour < 10?("0"+hour):(hour))+":"+(min < 10?("0"+min):(min))+":"+(sec < 10?("0"+sec):(sec))
+//            console.log(timestr);
+//            $('#endDate').val(timestr);
+//            $('#endDateDiv').attr("data-date",timestr);
             // 初始化表格
             initTable();
         }
