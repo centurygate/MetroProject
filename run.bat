@@ -4,7 +4,7 @@ call mvn clean package
 
 C:
 cd C:\Program Files\apache-tomcat-9.0.0.M13\webapps
-del  WaterFactory.war
+del  MetroProject.war
 rmdir /s /q MetroProject
 del  MetroProject.war
 rmdir /s /q MetroProject
