@@ -224,8 +224,9 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 JSON.stringify(data);
-                // var selconfirm = new SelfConfirm('info', "userid:" + $("#sel").val() + "</br> Added Auth: " + addauth + "</br> Del Auth: " + delauth + "</br>" + JSON.stringify(data));
-                // selconfirm.showTip();
+                console.log("userid:" + $("#sel").val() + "</br> Added Auth: " + addauth + "</br> Del Auth: " + delauth + "</br>" + JSON.stringify(data));
+                var selconfirm = new SelfConfirm('info', "更改成功");
+                selconfirm.showTip();
 
             },
             error: function (msg) {
