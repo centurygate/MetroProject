@@ -93,8 +93,8 @@ $(document).ready(function () {
         var requesturi = "service/rest/getAuthByName?userid=" + userid;
         $.getJSON(requesturi, function (resources_data) {
 
-            var confirm = new SelfConfirm('info', JSON.stringify(resources_data));
-            confirm.showTip();
+            // var confirm = new SelfConfirm('info', JSON.stringify(resources_data));
+            // confirm.showTip();
             $(":checkbox[name='userauthorities']").prop("checked", false);
             var resource;
             var resource_id;
@@ -104,8 +104,8 @@ $(document).ready(function () {
 
                 $(":checkbox[value='" + resource_id + "']").prop("checked", true);
             }
-            var selfconfirm = new SelfConfirm('info', "Origin Auth: " + orignAuthArray);
-            selfconfirm.showTip();
+            // var selfconfirm = new SelfConfirm('info', "Origin Auth: " + orignAuthArray);
+            // selfconfirm.showTip();
         });
     });
     $('#changeauthority').click(function () {
@@ -122,8 +122,8 @@ $(document).ready(function () {
             url: "getcsrf",
             async: false,
             success: function (data, status) {
-                var selconfirm = new SelfConfirm('info', "Ajax GET ${pageContext.request.contextPath}/innerchauth" + " </br>Result As Below:</br>" + html_encode(data));
-                selconfirm.showTip();
+                // var selconfirm = new SelfConfirm('info', "Ajax GET ${pageContext.request.contextPath}/innerchauth" + " </br>Result As Below:</br>" + html_encode(data));
+                // selconfirm.showTip();
                 console.log("==================================================");
                 console.log(status);
                 console.log("||||||||||||||||||||||||||||||||||||||||||||||||||");
@@ -155,8 +155,8 @@ $(document).ready(function () {
                 curentAuthArray.push(authid);
             }
         });
-        var selconfirm = new SelfConfirm('info', "Current Auth: " + curentAuthArray);
-        selconfirm.showTip();
+        // var selconfirm = new SelfConfirm('info', "Current Auth: " + curentAuthArray);
+        // selconfirm.showTip();
         var addauth = "";
         var delauth = "";
         var bfind = false;
@@ -224,8 +224,8 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 JSON.stringify(data);
-                var selconfirm = new SelfConfirm('info', "userid:" + $("#sel").val() + "</br> Added Auth: " + addauth + "</br> Del Auth: " + delauth + "</br>" + JSON.stringify(data));
-                selconfirm.showTip();
+                // var selconfirm = new SelfConfirm('info', "userid:" + $("#sel").val() + "</br> Added Auth: " + addauth + "</br> Del Auth: " + delauth + "</br>" + JSON.stringify(data));
+                // selconfirm.showTip();
 
             },
             error: function (msg) {
