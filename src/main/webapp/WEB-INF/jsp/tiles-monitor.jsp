@@ -37,7 +37,7 @@
     <script type="text/javascript">
         // 百度地图API功能
         var map = new BMap.Map("assetmap",{enableMapClick:false});    // 创建Map实例
-        map.centerAndZoom(new BMap.Point(118.802673,32.046303), 19);  // 初始化地图,设置中心点坐标和地图级别
+        map.centerAndZoom(new BMap.Point(118.802173,32.046303), 19);  // 初始化地图,设置中心点坐标和地图级别
         map.addControl(new BMap.MapTypeControl({mapTypes: [BMAP_NORMAL_MAP,BMAP_SATELLITE_MAP ]}));
         map.setCurrentCity("南京");          // 设置地图显示的城市 此项是必须设置的
     </script>

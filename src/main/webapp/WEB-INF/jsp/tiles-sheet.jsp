@@ -22,7 +22,7 @@
                     <use xlink:href="#stroked-table"></use>
                 </svg>
             </a></li>
-            <li class="active">总评报表</li>
+            <li class="active">总览报表</li>
         </ol>
     </div><!--/.row-->
     <hr class="hrtop"/> <!--分割横线-->

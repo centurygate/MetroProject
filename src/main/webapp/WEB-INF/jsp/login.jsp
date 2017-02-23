@@ -108,7 +108,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div>
                 <div class="tab-content" id="signin-signup-tab">
-                    <div class="tab-pane" id="signup-tab">
+                    <div class="tab-pane" id="signup-tab"  style="padding-top: 5%;">
                         <br>
                         <form action="${pageContext.request.contextPath}/registerUser" method="get"
                               class="form col-xs-offset-1 col-xs-10 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4"
@@ -148,13 +148,13 @@
                                        placeholder="联系地址" required/>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-lg btn-block">注册</button>
+                                <button type="submit" class="btn btn-success btn-block" style="height: 2.5em; margin-top: 0.5em;">注册</button>
                             </div>
                         </form>
                     </div>
 
 
-                    <div class="tab-pane active" id="signin-tab">
+                    <div class="tab-pane active" id="signin-tab" style="padding-top: 5%;">
                         <br>
                         <form action="${pageContext.request.contextPath}/login" method="post"
                               class="form col-xs-offset-1 col-xs-10 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4"
@@ -199,9 +199,9 @@
                             </div>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-lg btn-block">登录&nbsp;&nbsp;<i
-                                        class="glyphicon glyphicon-log-in"></i></button>
-                                <span><a href="newforgot.html">忘记密码</a></span>
+                                <button type="submit" class="btn btn-success btn-block" style="height: 2.5em; margin-top: 0.5em;">登录&nbsp;&nbsp;
+                                    <i class="glyphicon glyphicon-log-in"></i></button>
+                                <%--<span><a href="newforgot.html">忘记密码</a></span>--%>
                             </div>
                         </form>
                     </div>

@@ -87,21 +87,25 @@
                                         <%--<input class="span2" size="16" type="text" value="1979-01-01 23:59:59" placeholder="结束时间">--%>
                                         <%--<span class="add-on"><i class="glyphicon glyphicon-th"></i> </span>--%>
                                     <%--</div>--%>
-                                    <label for="startDate" class="col-md-2 control-label">起始时间</label>
-                                    <div class="input-group date form_datetime col-md-2" id="startDateDiv"
-                                         data-date="1979-01-01 00:00:00" data-date-format="yyyy-mm-dd hh:ii:ss" >
-                                        <input class="form-control" size="16" type="text" name="startDate" id="startDate" value="1979-01-01 00:00:00" placeholder="起始时间" readonly>
+                                    <div>
+                                        <label for="startDate" class="col-md-2 control-label">起始时间</label>
+                                        <div class="input-group date form_datetime col-md-2" id="startDateDiv"
+                                             data-date="1979-01-01 00:00:00" data-date-format="yyyy-mm-dd hh:ii:ss">
+                                            <input class="form-control" size="16" type="text" name="startDate" id="startDate" value="1979-01-01 00:00:00" placeholder="起始时间" readonly>
                                         <span class="input-group-addon"><span
                                                 class="glyphicon glyphicon-remove"></span></span>
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                        </div>
                                     </div>
-                                    <label for="endDate" class="col-md-2 control-label">结束时间</label>
-                                    <div class="input-group date form_datetime col-md-2" id="endDateDiv"
-                                         data-date="<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())%>" data-date-format="yyyy-mm-dd hh:ii:ss">
-                                        <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())%>" placeholder="结束时间" readonly>
+                                    <div style="margin-top: 0.5em;">
+                                        <label for="endDate" class="col-md-2 control-label">结束时间</label>
+                                        <div class="input-group date form_datetime col-md-2" id="endDateDiv"
+                                             data-date="<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())%>" data-date-format="yyyy-mm-dd hh:ii:ss">
+                                            <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="<%=(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(new Date())%>" placeholder="结束时间" readonly>
                                         <span class="input-group-addon"><span
                                                 class="glyphicon glyphicon-remove"></span></span>
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                        </div>
                                     </div>
                                     <input type="button" class="btn btn-default span1" id="eventquery" value="查询">
                                 </fieldset>
@@ -169,6 +173,7 @@
             if (responsedata != "absolutely ok")
             {
                     console.log("Location.herf = ",location.href);
+                    alert("location.pathname+location.search"+location.pathname+location.search);
                     location.replace(location.pathname+location.search);
                     return;
             }
