@@ -27,5 +27,9 @@ copy /y "target\MetroProject.war" "C:\Program Files\apache-tomcat-9.0.0.M13\weba
 cd C:\Program Files\apache-tomcat-9.0.0.M13\bin
 call startup.bat
 cd %b%
-pause
+
+echo "=============12秒后窗口自动关闭============="
+:: 等待6秒等tomcat进程结束完毕，否则del会报文件被进程占用无法删除
+ping /n 12 127.1>nul
+
 
