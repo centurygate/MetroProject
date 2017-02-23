@@ -86,15 +86,15 @@
                                         <%--<span class="add-on"><i class="glyphicon glyphicon-th"></i> </span>--%>
                                     <%--</div>--%>
                                     <label for="startDate" class="col-md-2 control-label">起始时间</label>
-                                    <div class="input-group date form_datetime col-md-2"
-                                         data-date="1979-01-01 00:00:00" data-date-format="yyyy-mm-dd hh:ii:ss">
+                                    <div class="input-group date form_datetime col-md-2" id="startDateDiv"
+                                         data-date="1979-01-01 00:00:00" data-date-format="yyyy-mm-dd hh:ii:ss" >
                                         <input class="form-control" size="16" type="text" name="startDate" id="startDate" value="1979-01-01 00:00:00" placeholder="起始时间" readonly>
                                         <span class="input-group-addon"><span
                                                 class="glyphicon glyphicon-remove"></span></span>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                                     </div>
                                     <label for="endDate" class="col-md-2 control-label">结束时间</label>
-                                    <div class="input-group date form_datetime col-md-2"
+                                    <div class="input-group date form_datetime col-md-2" id="endDateDiv"
                                          data-date="1979-01-01 23:59:59" data-date-format="yyyy-mm-dd hh:ii:ss">
                                         <input class="form-control" size="16" type="text" name="endDate" id="endDate" value="1979-01-01 23:59:59" placeholder="结束时间" readonly>
                                         <span class="input-group-addon"><span
@@ -358,6 +358,7 @@
                 (hour < 10?("0"+hour):(hour))+":"+(min < 10?("0"+min):(min))+":"+(sec < 10?("0"+sec):(sec))
             console.log(timestr);
             $('#endDate').val(timestr);
+            $('#endDateDiv').attr("data-date",timestr);
             // 初始化表格
             initTable();
         }
