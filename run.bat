@@ -1,5 +1,6 @@
 set b=%cd%
 set dirpath=%~d0
+call git pull
 call mvn clean package
 
 C:
