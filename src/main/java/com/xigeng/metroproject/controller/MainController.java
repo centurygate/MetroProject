@@ -665,11 +665,15 @@ public class MainController {
     //
     class BootStrapTableData {
         Integer total;
-        List<SecurityUserEntity> rows;
+        List<BootstrapUserInfo> rows;
 
         public BootStrapTableData(Integer total, List<SecurityUserEntity> rows) {
             this.total = total;
-            this.rows = rows;
+            this.rows = new ArrayList<BootstrapUserInfo>();
+            for (SecurityUserEntity securityUserEntity :
+                    rows) {
+                this.rows.add(new BootstrapUserInfo(securityUserEntity));
+            }
         }
 
         public Integer getTotal() {
@@ -680,15 +684,97 @@ public class MainController {
             this.total = total;
         }
 
-        public List<SecurityUserEntity> getRows() {
+        public List<BootstrapUserInfo> getRows() {
             return rows;
         }
 
-        public void setRows(List<SecurityUserEntity> rows) {
+        public void setRows(List<BootstrapUserInfo> rows) {
             this.rows = rows;
         }
     }
 
+    class BootstrapUserInfo
+    {
+        public BootstrapUserInfo(SecurityUserEntity securityUserEntity) {
+            this.username = securityUserEntity.getUsername();
+            this.id = securityUserEntity.getId();
+            this.status = securityUserEntity.getStatus();
+            this.email = securityUserEntity.getEmail();
+            this.phone = securityUserEntity.getPhone();
+            this.address = securityUserEntity.getAddress();
+            this.date = securityUserEntity.getDate();
+        }
+
+        private Long id;
+
+        private String username;
+
+        private Integer status;
+
+        private String email;
+
+        private String phone;
+
+        private String address;
+
+        private Date date;
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public Integer getStatus() {
+            return status;
+        }
+
+        public void setStatus(Integer status) {
+            this.status = status;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public void setDate(Date date) {
+            this.date = date;
+        }
+    }
     @RequestMapping(value = "/getregusers", method = RequestMethod.GET)
     @ResponseBody
     public BootStrapTableData getRegisterUsers(@RequestParam String startDate, @RequestParam String endDate, @RequestParam Integer offset, @RequestParam Integer limit,@RequestParam String search) {

@@ -236,15 +236,11 @@
                 field : 'username',
                 title : '用户名',
                 align : 'center'
-            },{
-                field : 'password',
-                title : '密码',
-                align : 'center'
             }, {
                 field : 'status',
                 title : '状态',
                 align : 'center',
-                width : '280px',
+//                width : '100px',
                 formatter : function(value, row, index) {
                     var html = '<input type="checkbox" id="status'+row.id+'" value="'+value+'"/>'+
                         '<script>' +
@@ -255,10 +251,6 @@
                    // console.log("formatter html="+html);
                     return html;
                 }
-            }, {
-                field : 'descfield;',
-                title : '描述',
-                align : 'center'
             },{
                 field : 'email',
                 title : '邮件',
