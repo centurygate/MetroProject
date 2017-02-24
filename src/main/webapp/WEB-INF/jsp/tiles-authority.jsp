@@ -210,8 +210,10 @@
             striped : true, // 隔行变色
             dataType : "json",	// 数据类型
             pagination : true,	// 是否启用分页
-            showPaginationSwitch : true, // 是否显示 数据条数选择框
-            pageSize : 3, // 每页的记录行数（*）
+            showPaginationSwitch : false, // 是否显示 数据条数选择框
+            paginationVAlign:'both',
+            pageSize : 6, // 每页的记录行数（*）
+            pageList : [3,6,9,15,20],
             pageNumber : 1,		// table初始化时显示的页数
             search : true, // 不显示 搜索框
             sidePagination : 'server', // 服务端分页
