@@ -10,17 +10,19 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <meta name="description" content="User login page" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>Login page</title>
+    <meta name="description" content="User login page"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>登录/注册</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/jquery-confirm.min.css"/>
     <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery.validate.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/localization/messages_zh.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-confirm.min.js"></script>
 </head>
 <script type="text/javascript">
     $(document).ready(
@@ -37,19 +39,20 @@
                         phone: {checkMobile: true},
                         signupusername: {
                             english: true,
-                            remote:{
-                                type:"GET",
-                                url:"checkUser",
-                                data:{
+                            remote: {
+                                type: "GET",
+                                url: "checkUser",
+                                data: {
                                     signupusername: function () {
                                         return $("#signupusername").val();
                                     }
                                 }
-                            }},
+                            }
+                        },
                     },
-                messages:{
-                    signupusername:{remote:$.validator.format("该用户名已被注册")},
-                },
+                    messages: {
+                        signupusername: {remote: $.validator.format("该用户名已被注册")},
+                    },
                     errorPlacement: function (error, element) {
                         // console.log(element);
                         // console.log(error);
@@ -81,8 +84,88 @@
                 $('#signup-li').addClass('active');
                 $('#signup-tab').addClass('active');
             });
-        }
-    );
+            $('#signupbtn').click(function () {
+                console.log("params: " + $('#signupform').serialize());
+                $.get("registerUser?" + $('#signupform').serialize(),
+                    function (responsedata, responsestatus) {
+                        console.log("responsedata: " + responsedata);
+                        console.log("responsestatus: " + responsestatus);
+                        var statusObj = JSON.parse(responsedata);
+                        console.log(statusObj);
+                        if (statusObj['status'] == 1) {
+                            $.alert({
+                                title: '注册成功',
+                                icon: 'glyphicon glyphicon-ok-sign',
+                                animation: 'zoom',
+                                closeAnimation: 'scale',
+                                content: responsedata + '\n' + responsestatus,
+                                autoClose: 'close|6000',
+                                buttons: {
+                                    close: {
+                                        text: '六秒钟后切换到登录页面',
+                                        btnClass: 'btn-success',
+                                        action: function () {
+                                            location.replace(location.pathname + location.search);
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                        else if (statusObj['status'] == 0) {
+                            $.alert({
+                                title: '注册失败',
+                                icon: 'glyphicon glyphicon-remove-sign',
+                                animation: 'zoom',
+                                closeAnimation: 'scale',
+                                content: responsedata + '\n' + responsestatus,
+//                                autoClose: 'close|6000',
+                                buttons: {
+                                    close: {
+                                        btnClass: 'btn-danger',
+                                        action: function () {
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            $.alert({
+                                title: '异常错误',
+                                icon: 'glyphicon glyphicon-warning-sign',
+                                animation: 'zoom',
+                                closeAnimation: 'scale',
+                                content: responsedata + '\n' + responsestatus,
+//                                autoClose: 'close|6000',
+                                buttons: {
+
+                                    close: {
+                                        btnClass: 'btn-danger',
+                                        action: function () {
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    }).error(function (xhr, errorText, errorType) {
+                    $.alert({
+                        title: '异常错误',
+                        icon: 'glyphicon glyphicon-warning-sign',
+                        animation: 'zoom',
+                        closeAnimation: 'scale',
+                        content: errorText + ':' + '请检查网络是否正常',
+//                                autoClose: 'close|6000',
+                        buttons: {
+
+                            close: {
+                                btnClass: 'btn-danger',
+                                action: function () {
+                                }
+                            }
+                        }
+                    })
+                });
+            });
+        });
 
 </script>
 <style>
@@ -94,12 +177,13 @@
 
 <body>
 <div class="container">
-    <div class="row" >
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul class="nav nav-tabs">
                 <li id="signin-li" class="active"><a href="#signin-tab" id="signin-href">登录&nbsp;&nbsp;<i
                         class="ace-icon fa fa-key"></i></a></li>
-                <li id="signup-li"><a href="#signup-tab" id="signup-href">注册&nbsp;&nbsp;<i class="ace-icon fa fa-users"></i></a>
+                <li id="signup-li"><a href="#signup-tab" id="signup-href">注册&nbsp;&nbsp;<i
+                        class="ace-icon fa fa-users"></i></a>
                 </li>
             </ul>
         </div>
@@ -108,26 +192,30 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div>
                 <div class="tab-content" id="signin-signup-tab">
-                    <div class="tab-pane" id="signup-tab"  style="padding-top: 5%;">
+                    <div class="tab-pane" id="signup-tab" style="padding-top: 5%;">
                         <br>
-                        <form action="${pageContext.request.contextPath}/registerUser" method="get"
-                              class="form col-xs-offset-1 col-xs-10 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4"
+                        <form class="form col-xs-offset-1 col-xs-10 col-sm-6 col-sm-offset-3 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4"
                               id="signupform">
                             <div class="input-group input-sm">
-                                <label class="input-group-addon" for="signupusername"><i class="glyphicon glyphicon-user"></i></label>
+                                <label class="input-group-addon" for="signupusername"><i
+                                        class="glyphicon glyphicon-user"></i></label>
                                 <!-- <i class="glyphicon glyphicon-user"></i> -->
-                                <input type="text" class="form-control" id="signupusername" name="signupusername" placeholder="用户名"
+                                <input type="text" class="form-control" id="signupusername" name="signupusername"
+                                       placeholder="用户名"
                                        minlength="4" maxlength="32" required/>
                             </div>
                             <div class="input-group input-sm">
-                                <label class="input-group-addon" for="signuppassword"><i class="glyphicon glyphicon-lock"></i></label>
+                                <label class="input-group-addon" for="signuppassword"><i
+                                        class="glyphicon glyphicon-lock"></i></label>
                                 <input type="password" class="form-control" id="signuppassword" name="signuppassword"
                                        placeholder="密码" minlength="4" maxlength="32" required/>
                             </div>
                             <div class="input-group input-sm">
-                                <label class="input-group-addon" for="confirmpassword"><i class="glyphicon glyphicon-lock"></i></label>
+                                <label class="input-group-addon" for="confirmpassword"><i
+                                        class="glyphicon glyphicon-lock"></i></label>
                                 <input type="password" class="form-control" id="confirmpassword" name="confirmpassword"
-                                       placeholder="确认密码" minlength="4" maxlength="32" equalTo="#signuppassword" required/>
+                                       placeholder="确认密码" minlength="4" maxlength="32" equalTo="#signuppassword"
+                                       required/>
                             </div>
                             <div class="input-group input-sm">
                                 <label class="input-group-addon" for="phone"><i
@@ -144,11 +232,14 @@
                             <div class="input-group input-sm">
                                 <label class="input-group-addon" for="address"><i
                                         class="glyphicon glyphicon-home"></i></label>
-                                <input type="text" class="form-control" id="address" name="address" minlength="4" maxlength="64"
+                                <input type="text" class="form-control" id="address" name="address" minlength="4"
+                                       maxlength="64"
                                        placeholder="联系地址" required/>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block" style="height: 2.5em; margin-top: 0.5em;">注册</button>
+                                <button type="button" class="btn btn-success btn-block"
+                                        style="height: 2.5em; margin-top: 0.5em;" id="signupbtn">注册
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -199,7 +290,8 @@
                             </div>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block" style="height: 2.5em; margin-top: 0.5em;">登录&nbsp;&nbsp;
+                                <button type="submit" class="btn btn-success btn-block"
+                                        style="height: 2.5em; margin-top: 0.5em;">登录&nbsp;&nbsp;
                                     <i class="glyphicon glyphicon-log-in"></i></button>
                                 <%--<span><a href="newforgot.html">忘记密码</a></span>--%>
                             </div>
@@ -210,7 +302,6 @@
         </div>
     </div>
 </div>
-
 
 
 </body>
