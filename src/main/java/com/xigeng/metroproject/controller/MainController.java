@@ -5,6 +5,7 @@ package com.xigeng.metroproject.controller;
  */
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xigeng.metroproject.log.SystemLog;
@@ -34,6 +35,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
+import java.util.regex.Pattern;
 
 @Controller
 public class MainController {
@@ -619,7 +621,7 @@ public class MainController {
         SystemLog.log("=====================================================");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        if(signupusername.contentEquals("admin")||signupusername.contentEquals("user"))
+        if ((securityUserEntityService.selectByUserName(signupusername)) != null)
         {
             out.println(false);
         }
@@ -629,6 +631,7 @@ public class MainController {
         }
         return null;
     }
+
     class RegisterStatus
     {
         Integer status;
@@ -733,8 +736,12 @@ public class MainController {
     }
     @RequestMapping(value = "/registerUser",method=RequestMethod.GET)
     @ResponseBody
-    public RegisterStatus registerUser(@RequestParam String signupusername,@RequestParam String signuppassword,@RequestParam String confirmpassword,@RequestParam String phone,@RequestParam String email,@RequestParam String address)
+    public String registerUser(@RequestParam String signupusername,@RequestParam String signuppassword,@RequestParam String confirmpassword,@RequestParam String phone,@RequestParam String email,@RequestParam String address) throws JsonProcessingException
     {
+        int count =0;
+        ObjectMapper objectMapper = new ObjectMapper();
+        RegisterStatus registerStatus = new RegisterStatus();
+        StringBuilder stringBuilder = new StringBuilder();
         SystemLog.log("===========================================================");
         SystemLog.log("signupusername:"+signupusername);
         SystemLog.log("signuppassword:"+signuppassword);
@@ -742,6 +749,67 @@ public class MainController {
         SystemLog.log("phone:"+phone);
         SystemLog.log("email:"+email);
         SystemLog.log("===========================================================");
+        //参数合法性检测
+        if(signupusername.length() < 4 || signupusername.length() > 32)
+        {
+            stringBuilder.append("usernameError: 用户名长度必须在4-32个字符");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+        if(signuppassword.length() < 4 || signuppassword.length() > 32)
+        {
+            stringBuilder.append("passwordError: 密码长度必须在4-32个字符");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+        if(!signuppassword.equals(confirmpassword))
+        {
+            stringBuilder.append("passwordError: 两次密码必须一致");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+
+        if((Pattern.compile("^1[3|4|5|8][0-9]\\d{8}$").matcher(phone).find() ?false:(Pattern.compile("^0\\d{2,3}-?\\d{7,8}$").matcher(phone).find()?false:true)))
+        {
+            stringBuilder.append("phoneError:  电话号码格式不正确");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+
+        if (!Pattern.compile("^[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}$").matcher(email).find())
+        {
+            stringBuilder.append("emailError:  邮箱格式不正确");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+        if(address.length() < 4 || address.length() > 32)
+        {
+            stringBuilder.append("addressError: 地址长度必须在4-64个字符");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+//        SystemLog.log("=================================================================================");
+        SecurityUserEntity searchsecurityUserEntity = securityUserEntityService.selectByUserName(signupusername);
+//        SystemLog.log(searchsecurityUserEntity);
+//        SystemLog.log("=================================================================================");
+        if (searchsecurityUserEntity != null)
+        {
+//            System.out.println("=================================================================================");
+//            System.out.println("usernameError: 用户名已被注册");
+            stringBuilder.append("usernameError: 用户名已被注册");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc(stringBuilder.toString());
+//            System.out.println("=================================================================================");
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+
+
         MyPasswordEncoder myPasswordEncoder = new MyPasswordEncoder();
         SecurityUserEntity securityUserEntity = new SecurityUserEntity();
         securityUserEntity.setUsername(signupusername);
@@ -752,24 +820,32 @@ public class MainController {
         securityUserEntity.setStatus(0);
         securityUserEntity.setAddress(address);
         securityUserEntity.setDate(new Date());
-        int count = securityUserEntityService.insertSecurityUserEntity(securityUserEntity);
-        SystemLog.log("autoIncrement Id:"+securityUserEntity.getId());
-
-
-        /**为新注册用户添加默认的角色*/
-        count = securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(2l)));
-        count = securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(4l)));
-        RegisterStatus registerStatus = new RegisterStatus();
+        count = securityUserEntityService.insertSecurityUserEntity(securityUserEntity);
         if(count > 0)
         {
             registerStatus.setStatus(Integer.valueOf(1));
             registerStatus.setDesc("successfully register");
+            return objectMapper.writeValueAsString(registerStatus);
+        }
+        SystemLog.log("autoIncrement Id:"+securityUserEntity.getId());
+
+
+        /**为新注册用户添加默认的角色*/
+        count =
+        count = securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(4l)));
+
+        if(securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(4l))) == 0
+                || securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(2l)))==0)
+        {
+
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc("databaseError: 数据库权限操作失败!");
         }
         else
         {
-            registerStatus.setStatus(Integer.valueOf(0));
-            registerStatus.setDesc("failed");
+            registerStatus.setStatus(Integer.valueOf(1));
+            registerStatus.setDesc("successfully register");
         }
-        return registerStatus;
+        return objectMapper.writeValueAsString(registerStatus);
     }
 }
