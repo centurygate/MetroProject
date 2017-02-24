@@ -844,7 +844,7 @@ public class MainController {
         else
         {
             registerStatus.setStatus(Integer.valueOf(1));
-            registerStatus.setDesc("successfully register");
+            registerStatus.setDesc("注册成功");
         }
         return objectMapper.writeValueAsString(registerStatus);
     }

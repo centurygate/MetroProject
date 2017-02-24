@@ -94,7 +94,7 @@
                         console.log(jsonObj);
                         if (jsonObj['status'] == 1) {
                             $.alert({
-                                title: '注册成功',
+                                title: '提示',
                                 icon: 'glyphicon glyphicon-ok-sign',
                                 animation: 'zoom',
                                 closeAnimation: 'scale',
