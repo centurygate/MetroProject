@@ -90,15 +90,15 @@
                     function (responsedata, responsestatus) {
                         console.log("responsedata: " + responsedata);
                         console.log("responsestatus: " + responsestatus);
-                        var statusObj = JSON.parse(responsedata);
-                        console.log(statusObj);
-                        if (statusObj['status'] == 1) {
+                        var jsonObj = JSON.parse(responsedata);
+                        console.log(jsonObj);
+                        if (jsonObj['status'] == 1) {
                             $.alert({
                                 title: '注册成功',
                                 icon: 'glyphicon glyphicon-ok-sign',
                                 animation: 'zoom',
                                 closeAnimation: 'scale',
-                                content: responsedata + '\n' + responsestatus,
+                                content: jsonObj['desc'],
                                 autoClose: 'close|6000',
                                 buttons: {
                                     close: {
@@ -117,7 +117,7 @@
                                 icon: 'glyphicon glyphicon-remove-sign',
                                 animation: 'zoom',
                                 closeAnimation: 'scale',
-                                content: responsedata + '\n' + responsestatus,
+                                content: jsonObj['desc'],
 //                                autoClose: 'close|6000',
                                 buttons: {
                                     close: {
@@ -134,7 +134,7 @@
                                 icon: 'glyphicon glyphicon-warning-sign',
                                 animation: 'zoom',
                                 closeAnimation: 'scale',
-                                content: responsedata + '\n' + responsestatus,
+                                content: jsonObj['desc'],
 //                                autoClose: 'close|6000',
                                 buttons: {
 

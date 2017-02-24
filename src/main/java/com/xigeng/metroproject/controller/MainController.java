@@ -734,7 +734,7 @@ public class MainController {
         securityUserEntityService.updateByPrimaryKey(securityUserEntity);
         return "absolutely ok";
     }
-    @RequestMapping(value = "/registerUser",method=RequestMethod.GET)
+    @RequestMapping(value = "/registerUser",method=RequestMethod.GET,produces="text/html;charset=UTF-8")
     @ResponseBody
     public String registerUser(@RequestParam String signupusername,@RequestParam String signuppassword,@RequestParam String confirmpassword,@RequestParam String phone,@RequestParam String email,@RequestParam String address) throws JsonProcessingException
     {
