@@ -159,11 +159,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -255,11 +255,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -351,11 +351,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -446,11 +446,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -541,11 +541,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -636,11 +636,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -731,11 +731,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -826,11 +826,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -921,11 +921,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {
@@ -1016,11 +1016,11 @@ $(function () {
                 onZero: false
             },
             axisLabel:{
-                interval: 1
+                interval: 5
             },
             axisTick:{
                 show: true,
-                interval: 1
+                interval: 5
             }
         },
         yAxis: {

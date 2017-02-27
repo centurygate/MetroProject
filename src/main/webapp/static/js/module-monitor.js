@@ -41,7 +41,14 @@ function showAssetTypes(requestUrl, type) {
                     var posx = ajaxobj[i].positionx;
                     var posy = ajaxobj[i].positiony;
                     var p = new BMap.Point(posx, posy);
-                    p.data = 3*i+1;
+                    //区分左右线，如果i>50则开始为左线，编号依次减去51
+                    if(i>50)
+                    {
+                        p.data = 3*(i-51)+1;
+                    }
+                    else{
+                        p.data = 3*i+1;
+                    }
                     points.push(p);
                     continue;
                 }
@@ -58,6 +65,16 @@ function showAssetTypes(requestUrl, type) {
 
             var pointCollection = new BMap.PointCollection(points, options);
 
+            //绿点覆盖物的点击事件
+            pointCollection.addEventListener('click', function (e) {
+
+                //手工打开模态框
+                $('#myModal').modal('show');
+
+                //修改对应index编号
+                var str = e.point.data + '#-管片历史监测';
+                $('#myModal #myModalLabel').text(str);
+            });
 
             //鼠标悬停事件
             pointCollection.addEventListener('mouseover', function (e) {

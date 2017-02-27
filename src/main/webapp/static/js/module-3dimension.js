@@ -31,19 +31,17 @@ $(function () {
     $('#menu-underground').click(function () {
 
         sgworld.Command.Execute(1027, 0);
-
-        switchHighlight(cnt);
     });
 
 
-    function switchHighlight() {
+/*    function switchHighlight() {
         var objid = sgworld.ProjectTree.FindItem('scale');
         var obj = sgworld.ProjectTree.GetObject(objid);
 
         var g= 128.0*(1.0-(cnt-0.2)/0.8);
         obj.Terrain.Tint.abgrColor = sgworld.Creator.CreateColor(255, g, 0, 255).ToABGRColor();
         cnt+=0.05;
-    }
+    }*/
 
 
     //三维模块中添加WebSocket的通信设置，这里监听实时数据发生的异常

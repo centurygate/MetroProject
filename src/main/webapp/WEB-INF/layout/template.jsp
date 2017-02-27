@@ -26,6 +26,7 @@
     <link href="${pageContext.request.contextPath}/static/css/realtimecharts.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/UpDownBootSideMenu.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/tiles-sheet.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/tiles-monitor.css" rel="stylesheet">
 
 </head>
 

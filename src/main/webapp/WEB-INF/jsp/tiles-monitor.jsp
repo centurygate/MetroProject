@@ -45,6 +45,125 @@
 
     <!--collapase panel in the bottom-->
     <div id = "downsidebar">
+            <%--这里添加右上角"左右切换"按钮--%>
+            <button id="switchbtn" class="btn btn-xs">左/右切换</button>
+
+            <!--模态框-显示为绿点点击的模态框显示-->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="width: 800px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                599#-管片历史监测
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="variation-time" style="width: 770px; height: 400px;"></div>
+                        </div>
+                        <script type="text/javascript">
+                            // 基于准备好的dom，初始化echarts实例
+                            var myChart2 = echarts.init(document.getElementById('variation-time'));
+
+                            // 指定图表的配置项和数据
+                            var option = {
+                                title: {
+                                    text: '管片沉降',
+                                    x: 'left'
+                                },
+                                tooltip: {
+                                    trigger: 'axis',
+                                    formatter: '环号：{b0} <br/> 累计变化量：{c0}(mm)'
+                                },
+                                /*legend: {
+                                    data:['--'],
+                                    y:  'top'
+                                },*/
+                                grid: {
+                                    left: '3%',
+                                    right: '3%',
+                                    top: 40,
+                                    bottom: 40,
+                                    containLabel: true
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    boundaryGap: false,
+                                    position: 'bottom',
+                                    gridIndex: 0,
+                                    scale: true,
+                                    data: ['2016-05-01','2016-05-05','2016-05-10','2016-05-15','2016-05-20','2016-05-25',
+                                        '2016-06-01','2016-06-05','2016-06-10','2016-06-15', '2016-06-20','2016-06-25',
+                                        '2016-07-01','2016-07-05','2016-07-10','2016-07-15','2016-07-20','2016-07-25',
+                                        '2016-08-01','2016-08-05','2016-08-10','2016-08-15','2016-08-20','2016-08-25',
+                                        '2016-09-01','2016-09-05','2016-09-10','2016-09-15','2016-09-20','2016-09-25',
+                                        '2016-10-01','2016-10-05','2016-10-10','2016-10-15','2016-10-20','2016-10-25',
+                                        '2016-11-01','2016-11-05','2016-11-10','2016-11-15','2016-11-20','2016-11-25',
+                                        '2016-12-01','2016-12-05','2016-12-10','2016-12-15','2016-12-20','2016-12-25',
+                                        '2017-01-01','2017-01-05','2017-01-10','2017-01-15','2017-01-20','2017-01-25',
+                                        '2017-02-01','2017-02-05','2017-02-10','2017-02-15','2017-02-20','2017-02-25'],
+                                    splitLine:{
+                                        show:true
+                                    },
+                                    axisLine:{
+                                        onZero: false
+                                    },
+                                    axisLabel:{
+                                        rotate: 45,
+                                        interval: 2
+                                    },
+                                    axisTick:{
+                                        show: true,
+                                        interval: 2
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    nameLocation: 'middle',
+                                    nameGap: 40,
+                                    name: '测量值(mm)',
+                                    nameTextStyle:{
+                                        fontSize: 12,
+                                        fontWeight: 'bold'
+                                    },
+                                    min: -73.5,
+                                    max: -70.5,
+                                    splitNumber: 12
+                                },
+                                series: [
+                                    {
+                                        name:'#',
+                                        type:'line',
+                                        stack: '总量',
+                                        symbol:'circle',
+                                        symbolSize: 5,
+                                        lineStyle:{
+                                            normal:{
+                                                color: '#20B2AA'
+                                            }
+                                        },
+                                        itemStyle:{
+                                            normal:{
+                                                color: '#20B2AA'
+                                            }
+                                        },
+                                        data:[-71.4, -70.8, -71.1, -70.9, -70.8, -71.0, -71.2, -71.0, -71.0, -70.9, -70.9, -71.0, -71.0, -71.2, -71.2,
+                                            -71.2, -71.2, -71.6, -71.6, -71.4, -71.4, -71.4, -71.4, -71.4, -71.3, -71.8, -71.8, -71.9, -71.4, -71.4,
+                                            -71.4, -71.4, -71.6, -71.6, -71.4, -71.8, -72.3, -72.3, -73.0, -72.8, -72.6, -72.1, -71.9, -72.0, -72.0,
+                                            -71.7, -71.7, -71.9, -71.9, -72.1, -72.3, -72.4, -72.6, -73.2, -72.9, -72.8, -73.0, -72.8, -72.7, -72.9]
+                                    }
+                                ]
+                            };
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart2.setOption(option);
+                        </script>
+
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
 
             <!--这里测试添加折线图表-->
             <div id="main" style="width: 100%;height:320px;"></div>
@@ -54,9 +173,10 @@
 
                 // 指定图表的配置项和数据
                 var moveTimer= null;
+                var chartIdx= 1;
                 var option = {
                     title: {
-                        text: '道床沉降-右线',
+                        text: '管片沉降-右线',
                         x: 'center',
                         padding: 10
                     },
@@ -191,8 +311,17 @@
                         }
                     }
 
-                    var x = coorArrayx[params[0].name/3];
-                    var y = coorArrayy[params[0].name/3];
+                    var x = null;
+                    var y = null;
+                    if(chartIdx %2 == 1) //如果为‘左线’状态在左侧移动；同理‘右线’
+                    {
+                        x = coorArrayx[params[0].name/3];
+                        y = coorArrayy[params[0].name/3];
+                    }
+                    else{
+                        x = coorArrayx[51+ params[0].name/3];
+                        y = coorArrayy[51+ params[0].name/3];
+                    }
 
                     var pt = new BMap.Point(x, y);
                     //地图移动到指定点中心
@@ -205,7 +334,6 @@
                 }
 
             </script>
-        <%--</div>--%>
     </div>
 
 </div>

@@ -1,0 +1,14 @@
+
+
+#switchbtn{
+    position: absolute;
+    right: 20px;
+    top: 8px;
+    z-index: 999;
+}
+
+
+#downsidebar > #myModal{
+    margin-top: 100px;
+}
+
