@@ -19,6 +19,9 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/jquery-confirm.min.css"/>
+    <link rel="icon" href="${pageContext.request.contextPath}/static/image/metro.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/image/metro.ico" type="image/x-icon" />
+    <link rel="bookmark" href="${pageContext.request.contextPath}/static/image/metro.ico" type="image/x-icon" />
     <script src="${pageContext.request.contextPath}/static/js/jquery-1.11.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery.validate.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/localization/messages_zh.min.js"></script>

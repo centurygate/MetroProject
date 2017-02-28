@@ -27,6 +27,9 @@
     <link href="${pageContext.request.contextPath}/static/css/UpDownBootSideMenu.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/tiles-sheet.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/css/tiles-monitor.css" rel="stylesheet">
+    <link rel="icon" href="${pageContext.request.contextPath}/static/image/metro.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/image/metro.ico" type="image/x-icon" />
+    <link rel="bookmark" href="${pageContext.request.contextPath}/static/image/metro.ico" type="image/x-icon" />
 
 </head>
 
