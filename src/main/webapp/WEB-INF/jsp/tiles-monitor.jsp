@@ -49,7 +49,8 @@
             <button id="switchbtn" class="btn btn-xs">左/右切换</button>
 
             <!--模态框-显示为绿点点击的模态框显示-->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                 style="margin-top: 5%;">
                 <div class="modal-dialog" style="width: 800px;">
                     <div class="modal-content">
                         <div class="modal-header">
