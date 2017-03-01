@@ -114,7 +114,7 @@
                                 }
                             });
                         }
-                        else if (statusObj['status'] == 0) {
+                        else if (jsonObj['status'] == 0) {
                             $.alert({
                                 title: '注册失败',
                                 icon: 'glyphicon glyphicon-remove-sign',
