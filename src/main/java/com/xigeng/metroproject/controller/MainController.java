@@ -909,28 +909,32 @@ public class MainController {
         count = securityUserEntityService.insertSecurityUserEntity(securityUserEntity);
         if(count > 0)
         {
-            registerStatus.setStatus(Integer.valueOf(1));
-            registerStatus.setDesc("successfully register");
-            return objectMapper.writeValueAsString(registerStatus);
-        }
-        SystemLog.log("autoIncrement Id:"+securityUserEntity.getId());
+            SystemLog.log("autoIncrement Id:"+securityUserEntity.getId());
 
 
-        /**为新注册用户添加默认的角色*/
-        count =
-        count = securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(4l)));
+            /**为新注册用户添加默认的角色*/
 
-        if(securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(4l))) == 0
-                || securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(2l)))==0)
-        {
+            if((securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(4l))) == 0)
+                    || (securityUserRoleService.insert(new SecurityUserRoleEntity(securityUserEntity.getId(),Long.valueOf(2l)))==0))
+            {
 
-            registerStatus.setStatus(Integer.valueOf(0));
-            registerStatus.setDesc("databaseError: 数据库权限操作失败!");
+                registerStatus.setStatus(Integer.valueOf(0));
+                registerStatus.setDesc("databaseError: 数据库权限操作失败!");
+                System.out.println("databaseError: 数据库权限操作失败!");
+            }
+            else
+            {
+                registerStatus.setStatus(Integer.valueOf(1));
+                registerStatus.setDesc("注册成功");
+                SystemLog.log("注册成功");
+            }
+
+
         }
         else
         {
-            registerStatus.setStatus(Integer.valueOf(1));
-            registerStatus.setDesc("注册成功");
+            registerStatus.setStatus(Integer.valueOf(0));
+            registerStatus.setDesc("databaseError: 数据库权限操作失败!");
         }
         return objectMapper.writeValueAsString(registerStatus);
     }
